@@ -1,11 +1,2444 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=../index.html">
-  <title>Redirecting to IFRS Learning Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IFRS Learning Hub | Hồ sơ học tập IFRS & Ôn luyện DipIFR</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              200: '#bae0fd',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            },
+            accent: {
+              amber: '#f59e0b',
+              emerald: '#10b981',
+              rose: '#f43f5e',
+              indigo: '#6366f1',
+              violet: '#8b5cf6'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    code, pre, .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.05);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(100, 116, 139, 0.4);
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(100, 116, 139, 0.7);
+    }
+    .node-pulse {
+      animation: pulse-ring 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+  </style>
 </head>
-<body style="font-family: sans-serif; text-align: center; padding: 40px;">
-  <p>Đang chuyển hướng sang <a href="../index.html">IFRS Learning Hub Landing Page</a>...</p>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col custom-scrollbar">
+
+  <!-- Top Announcement / DipIFR Mission -->
+  <div class="bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 text-sky-200 text-xs py-2 px-4 border-b border-sky-800/40">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-400/20 text-amber-300 border border-amber-400/30">DipIFR / CertIFR Prep</span>
+        <span class="text-slate-300 font-medium">Hồ sơ học tập & Lộ trình chuẩn hóa 36 Chuẩn mực IFRS/IAS theo giáo trình DipIFR</span>
+      </div>
+      <div class="flex items-center gap-3 text-[11px] text-sky-300/80">
+        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> 16 Đã học</span>
+        <span class="text-slate-500">•</span>
+        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span> 20 Cần ôn luyện</span>
+        <span class="text-slate-500">•</span>
+        <a href="https://www.ifrs.org/issued-standards/list-of-standards/?language=en&year=%2Fcontent%2Fcq%3Atags%2Fifrs%2Fproduction%2Fstandard-year%2F2026&issue-type=%2Fcontent%2Fcq%3Atags%2Fifrs%2Fproduction%2Fissue-type%2Fissued" target="_blank" class="inline-flex items-center gap-1 text-amber-300 hover:text-white underline decoration-amber-400/50 transition-colors">
+          Tra cứu Chuẩn mực Gốc IFRS 2026 (ifrs.org) ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200/80 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-700 via-sky-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-slate-900 via-sky-900 to-slate-900 bg-clip-text text-transparent">IFRS Learning Hub</span>
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-sky-100 text-sky-800 px-1.5 py-0.5 rounded">v2.0</span>
+            </div>
+            <p class="text-[11px] text-slate-500 font-medium">Hành trình làm chủ DipIFR & IFRS Tích hợp</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Tabs -->
+        <nav class="hidden md:flex items-center gap-1 font-medium text-sm text-slate-600">
+          <a href="#hero" class="nav-link px-3 py-2 rounded-lg hover:text-sky-700 hover:bg-sky-50 transition-colors flex items-center gap-1.5 active">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            Tổng quan
+          </a>
+          <a href="#roadmap" class="nav-link px-3 py-2 rounded-lg hover:text-sky-700 hover:bg-sky-50 transition-colors flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+            Lộ trình 5 Chặng
+          </a>
+          <a href="#standards" class="nav-link px-3 py-2 rounded-lg hover:text-sky-700 hover:bg-sky-50 transition-colors flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            Thư viện Chuẩn mực
+          </a>
+          <a href="#practice" class="nav-link px-3 py-2 rounded-lg hover:text-sky-700 hover:bg-sky-50 transition-colors flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+            Bài tập & Cases
+          </a>
+          <a href="#knowledge-map" class="nav-link px-3 py-2 rounded-lg hover:text-sky-700 hover:bg-sky-50 transition-colors flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            Bản đồ Liên kết
+          </a>
+          <a href="#exam-prep" class="nav-link px-3 py-2 rounded-lg text-amber-700 bg-amber-50/80 hover:bg-amber-100 transition-colors flex items-center gap-1.5 font-semibold">
+            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            Ôn thi DipIFR & Quiz
+          </a>
+        </nav>
+
+        <!-- Right Quick Actions -->
+        <div class="flex items-center gap-2">
+          <button id="btn-export-data" title="Xuất dữ liệu học tập cá nhân (JSON)" class="p-2 text-slate-500 hover:text-sky-700 hover:bg-slate-100 rounded-lg transition-colors border border-slate-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          </button>
+          <label for="import-file" title="Nhập dữ liệu học tập (JSON)" class="p-2 cursor-pointer text-slate-500 hover:text-sky-700 hover:bg-slate-100 rounded-lg transition-colors border border-slate-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+          </label>
+          <input type="file" id="import-file" accept=".json" class="hidden">
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Nav Drawer -->
+      <div id="mobile-menu" class="hidden md:hidden py-3 border-t border-slate-200 space-y-1">
+        <a href="#hero" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-sky-50">Tổng quan Dashboard</a>
+        <a href="#roadmap" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-sky-50">Lộ trình 5 Chặng</a>
+        <a href="#standards" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-sky-50">Thư viện Chuẩn mực (16)</a>
+        <a href="#practice" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-sky-50">Dạng bài tập (EX-01 → EX-25) & Cases</a>
+        <a href="#knowledge-map" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-sky-50">Bản đồ Liên kết Kiến thức</a>
+        <a href="#exam-prep" class="block px-3 py-2 rounded-md text-base font-medium text-amber-800 bg-amber-50">Ôn thi DipIFR & Trắc nghiệm Mini-Test</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1">
+
+    <!-- SECTION A: HERO / DASHBOARD -->
+    <section id="hero" class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-850 to-slate-900 text-white pt-12 pb-20">
+      <!-- Background Ambient Glow -->
+      <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-sky-500 blur-3xl"></div>
+        <div class="absolute top-1/2 -right-24 w-96 h-96 rounded-full bg-indigo-500 blur-3xl"></div>
+        <div class="absolute -bottom-24 left-1/3 w-80 h-80 rounded-full bg-amber-500 blur-3xl"></div>
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Hero Left Column -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-950/80 border border-sky-600/40 text-sky-300 text-xs font-semibold backdrop-blur">
+              <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+              ACCA DipIFR • CertIFR • Chuẩn mực BCTC Quốc tế
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              IFRS Learning Hub
+              <span class="block text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-teal-300 to-amber-300 text-2xl sm:text-3xl lg:text-4xl mt-2 font-bold">
+                Từ nền tảng chuẩn mực đến bài tập tích hợp DipIFR
+              </span>
+            </h1>
+
+            <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+              Hệ thống hóa toàn bộ kiến thức, bài tập tính toán và tình huống tích hợp đa chuẩn mực theo chuẩn đề thi DipIFR. Hiểu bản chất kinh tế, nguyên tắc ghi nhận, đo lường và thuyết minh BCTC theo IFRS.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="#roadmap" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold text-sm shadow-lg shadow-sky-600/30 transition-all transform hover:-translate-y-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                Khám phá Lộ trình 5 Chặng
+              </a>
+              <a href="#standards" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-sm transition-all">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                Thư viện 36 Chuẩn mực (16 Đã học • 20 Cần ôn)
+              </a>
+              <a href="#exam-prep" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 font-semibold text-sm transition-all">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                Luyện bài & Thi thử
+              </a>
+            </div>
+
+            <!-- Progress Tracker Overview -->
+            <div class="pt-4 border-t border-slate-800/80">
+              <div class="flex items-center justify-between text-xs text-slate-300 mb-2">
+                <span class="flex items-center gap-1.5 font-medium">
+                  <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  Tiến độ ôn luyện bài tập cá nhân:
+                </span>
+                <span id="hero-progress-text" class="font-bold text-sky-400 font-mono">0 / 25 Dạng bài (0%)</span>
+              </div>
+              <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden p-0.5 border border-slate-700/60">
+                <div id="hero-progress-bar" class="bg-gradient-to-r from-sky-500 to-emerald-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Right Column: KPI Cards Grid -->
+          <div class="lg:col-span-5 grid grid-cols-2 gap-3.5">
+            
+            <!-- KPI 1: Chuẩn mực đã học -->
+            <div class="bg-slate-800/70 border border-slate-700/80 rounded-2xl p-4 backdrop-blur hover:border-emerald-500/50 transition-colors">
+              <div class="flex items-center justify-between text-emerald-400 mb-2">
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Đã học & Thực hành</span>
+                <span class="p-1.5 rounded-lg bg-emerald-500/10"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+              </div>
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-3xl font-extrabold text-white font-mono">16</span>
+                <span class="text-xs text-emerald-400 font-mono font-semibold">/ 36 chuẩn (44%)</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">Chuẩn mực cốt lõi đã hoàn thành lý thuyết & bài tập</p>
+            </div>
+
+            <!-- KPI 2: Cần ôn luyện thi DipIFR -->
+            <div class="bg-slate-800/70 border border-slate-700/80 rounded-2xl p-4 backdrop-blur hover:border-amber-500/50 transition-colors">
+              <div class="flex items-center justify-between text-amber-400 mb-2">
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Cần ôn luyện</span>
+                <span class="p-1.5 rounded-lg bg-amber-500/10"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></span>
+              </div>
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-3xl font-extrabold text-amber-400 font-mono">20</span>
+                <span class="text-xs text-amber-300 font-mono font-semibold">chuẩn mực mới</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">IAS 37, 19, 21, 40, IFRS 2, 5... theo chuẩn ifrs.org</p>
+            </div>
+
+            <!-- KPI 3: Tổng chuẩn mực DipIFR -->
+            <div class="bg-slate-800/70 border border-slate-700/80 rounded-2xl p-4 backdrop-blur hover:border-sky-500/50 transition-colors">
+              <div class="flex items-center justify-between text-sky-400 mb-2">
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Tổng lộ trình DipIFR</span>
+                <span class="p-1.5 rounded-lg bg-sky-500/10"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg></span>
+              </div>
+              <div class="text-3xl font-extrabold text-white font-mono">36</div>
+              <p class="text-[11px] text-slate-400 mt-1">Chuẩn mực IFRS/IAS bao phủ toàn bộ giáo trình thi ACCA</p>
+            </div>
+
+            <!-- KPI 4: Điểm cảnh báo ưu tiên -->
+            <div class="bg-gradient-to-br from-rose-950/40 via-slate-800 to-slate-800/90 border border-rose-600/40 rounded-2xl p-4 backdrop-blur hover:border-rose-500 transition-colors">
+              <div class="flex items-center justify-between text-rose-400 mb-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-rose-300">Cảnh báo ôn thi</span>
+                <span class="p-1.5 rounded-lg bg-rose-500/20"><svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg></span>
+              </div>
+              <div class="flex items-baseline gap-2">
+                <span class="text-3xl font-extrabold text-rose-400 font-mono">50%</span>
+                <span class="text-xs text-rose-300 font-semibold">Derecognition</span>
+              </div>
+              <p class="text-[11px] text-rose-200/80 mt-1">Cần bổ sung gấp IAS 37 (Dự phòng) & IAS 19 (Lương hưu)</p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION B: LEARNING ROADMAP (Lộ trình 5 chặng) -->
+    <section id="roadmap" class="py-16 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 text-sky-700 text-xs font-bold uppercase tracking-wider mb-2">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+            Lộ trình học tập tích hợp
+          </div>
+          <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Hành trình 5 Chặng chuẩn bị cho DipIFR</h2>
+          <p class="text-slate-600 mt-2 text-sm sm:text-base">
+            Không học rời rạc từng chuẩn mực. Đi theo chuỗi logic từ khung khái niệm, đo lường tài sản, cấu trúc hợp nhất M&A, chuỗi doanh thu - công nợ đến các công cụ tài chính phức hợp.
+          </p>
+        </div>
+
+        <!-- Roadmap Timeline Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
+          
+          <!-- Phase 1 -->
+          <div class="bg-gradient-to-b from-sky-50 to-white border border-sky-200 rounded-2xl p-5 hover:shadow-lg transition-all group relative flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold font-mono px-2 py-0.5 rounded bg-sky-600 text-white">Chặng 1</span>
+                <span class="text-xs text-sky-700 font-semibold">Nền tảng (7 chuẩn)</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-base mb-1">Nền tảng & Trình bày</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                Khung khái niệm, nguyên tắc Going concern, Trình bày BCTC, Dòng tiền, Chính sách & Sai sót, Sự kiện sau ngày BC, Lần đầu áp dụng IFRS.
+              </p>
+              
+              <div class="space-y-2 mb-4">
+                <div>
+                  <span class="text-[10px] font-bold text-emerald-700 uppercase block mb-1">✓ Đã học (1):</span>
+                  <div class="flex flex-wrap gap-1">
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">Framework</span>
+                  </div>
+                </div>
+                <div>
+                  <span class="text-[10px] font-bold text-amber-700 uppercase block mb-1">⏳ Cần ôn luyện (6):</span>
+                  <div class="flex flex-wrap gap-1">
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IAS 1</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IAS 7</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IAS 8</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IAS 10</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IAS 34</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IFRS 1</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button onclick="filterStandardsByCluster('Foundation')" class="w-full text-xs font-semibold py-2 px-3 rounded-lg bg-sky-100 text-sky-800 hover:bg-sky-200 transition-colors text-center">
+              Xem 7 chuẩn mực →
+            </button>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="bg-gradient-to-b from-emerald-50 to-white border border-emerald-200 rounded-2xl p-5 hover:shadow-lg transition-all group relative flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold font-mono px-2 py-0.5 rounded bg-emerald-600 text-white">Chặng 2</span>
+                <span class="text-xs text-emerald-700 font-semibold">Tài sản (9 chuẩn)</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-base mb-1">Tài sản & Đo lường</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                PPE, Vô hình, Trợ cấp CP, Lãi vay, Suy giảm CGU, Hàng tồn kho, BĐS đầu tư, Nông nghiệp, Tài sản giữ để bán.
+              </p>
+
+              <div class="space-y-2 mb-4">
+                <div>
+                  <span class="text-[10px] font-bold text-emerald-700 uppercase block mb-1">✓ Đã học (5):</span>
+                  <div class="flex flex-wrap gap-1">
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IAS 16</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IAS 38</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IAS 36</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IAS 20</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IAS 23</span>
+                  </div>
+                </div>
+                <div>
+                  <span class="text-[10px] font-bold text-amber-700 uppercase block mb-1">⏳ Cần ôn luyện (4):</span>
+                  <div class="flex flex-wrap gap-1">
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IAS 2</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IAS 40</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IAS 41</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IFRS 5</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button onclick="filterStandardsByCluster('Assets')" class="w-full text-xs font-semibold py-2 px-3 rounded-lg bg-emerald-100 text-emerald-800 hover:bg-emerald-200 transition-colors text-center">
+              Xem 9 chuẩn mực →
+            </button>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="bg-gradient-to-b from-indigo-50 to-white border border-indigo-200 rounded-2xl p-5 hover:shadow-lg transition-all group relative flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold font-mono px-2 py-0.5 rounded bg-indigo-600 text-white">Chặng 3</span>
+                <span class="text-xs text-indigo-700 font-semibold">Hợp nhất & Ngoại tệ (9)</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-base mb-1">M&A & Tập đoàn</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                Thuế hoãn lại, Hợp nhất M&A, Goodwill, BCTC hợp nhất W1-W6, Cty liên kết, Ngoại tệ FCTR, Bên liên quan, BCTC riêng, Thỏa thuận chung.
+              </p>
+
+              <div class="space-y-2 mb-4">
+                <div>
+                  <span class="text-[10px] font-bold text-emerald-700 uppercase block mb-1">✓ Đã học (4):</span>
+                  <div class="flex flex-wrap gap-1">
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IAS 12</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IFRS 3</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IFRS 10</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IAS 28</span>
+                  </div>
+                </div>
+                <div>
+                  <span class="text-[10px] font-bold text-amber-700 uppercase block mb-1">⏳ Cần ôn luyện (5):</span>
+                  <div class="flex flex-wrap gap-1">
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IAS 21</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IAS 24</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IAS 27</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IFRS 11</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IFRS 12</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button onclick="filterStandardsByCluster('Tax & Consolidation')" class="w-full text-xs font-semibold py-2 px-3 rounded-lg bg-indigo-100 text-indigo-800 hover:bg-indigo-200 transition-colors text-center">
+              Xem 9 chuẩn mực →
+            </button>
+          </div>
+
+          <!-- Phase 4 -->
+          <div class="bg-gradient-to-b from-amber-50 to-white border border-amber-200 rounded-2xl p-5 hover:shadow-lg transition-all group relative flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold font-mono px-2 py-0.5 rounded bg-amber-600 text-white">Chặng 4</span>
+                <span class="text-xs text-amber-700 font-semibold">Doanh thu & Dự phòng (5)</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-base mb-1">Hợp đồng & Chi phí</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                Doanh thu 5 bước, Quyền sử dụng ROU & Nợ thuê, Dự phòng & Hợp đồng rủi ro lớn, Quỹ hưu trí, Cổ phiếu thưởng ESOP.
+              </p>
+
+              <div class="space-y-2 mb-4">
+                <div>
+                  <span class="text-[10px] font-bold text-emerald-700 uppercase block mb-1">✓ Đã học (2):</span>
+                  <div class="flex flex-wrap gap-1">
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IFRS 15</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IFRS 16</span>
+                  </div>
+                </div>
+                <div>
+                  <span class="text-[10px] font-bold text-amber-700 uppercase block mb-1">⏳ Cần ôn luyện (3):</span>
+                  <div class="flex flex-wrap gap-1">
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300 font-bold">IAS 37 (Hot)</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IAS 19</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IFRS 2</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button onclick="filterStandardsByCluster('Revenue & Leases')" class="w-full text-xs font-semibold py-2 px-3 rounded-lg bg-amber-100 text-amber-800 hover:bg-amber-200 transition-colors text-center">
+              Xem 5 chuẩn mực →
+            </button>
+          </div>
+
+          <!-- Phase 5 -->
+          <div class="bg-gradient-to-b from-purple-50 to-white border border-purple-200 rounded-2xl p-5 hover:shadow-lg transition-all group relative flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold font-mono px-2 py-0.5 rounded bg-purple-600 text-white">Chặng 5</span>
+                <span class="text-xs text-purple-700 font-semibold">Công cụ TC & EPS (6)</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-base mb-1">Công cụ TC & Báo cáo</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                IFRS 9 (EIR, ECL, FVOCI), Nợ vs Vốn IAS 32, Thuyết minh IFRS 7, Fair Value IFRS 13, Lãi trên CP EPS, Bộ phận kinh doanh.
+              </p>
+
+              <div class="space-y-2 mb-4">
+                <div>
+                  <span class="text-[10px] font-bold text-emerald-700 uppercase block mb-1">✓ Đã học (4):</span>
+                  <div class="flex flex-wrap gap-1">
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IFRS 9</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IAS 32</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IFRS 7</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-100 font-mono font-semibold text-emerald-800 border border-emerald-200">IFRS 13</span>
+                  </div>
+                </div>
+                <div>
+                  <span class="text-[10px] font-bold text-amber-700 uppercase block mb-1">⏳ Cần ôn luyện (2):</span>
+                  <div class="flex flex-wrap gap-1">
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IAS 33</span>
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-amber-50 font-mono font-semibold text-amber-800 border border-amber-300">IFRS 8</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button onclick="filterStandardsByCluster('Financial Instruments')" class="w-full text-xs font-semibold py-2 px-3 rounded-lg bg-purple-100 text-purple-800 hover:bg-purple-200 transition-colors text-center">
+              Xem 6 chuẩn mực →
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION C: STANDARDS LIBRARY (Thư viện Chuẩn mực) -->
+    <section id="standards" class="py-16 bg-slate-50 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-200 text-slate-700 text-xs font-bold uppercase tracking-wider mb-2">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+              Danh mục 36 Chuẩn mực IFRS / IAS
+            </div>
+            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Thư viện Chuẩn mực Ôn thi DipIFR</h2>
+            <p class="text-slate-600 text-sm mt-1">
+              Phủ toàn diện 36 chuẩn mực theo danh mục IFRS chính thức (2026 Issued Standards) và đề cương ACCA. Lọc theo trạng thái học tập hoặc cụm chuyên đề.
+            </p>
+          </div>
+
+          <!-- Search & Filter Controls -->
+          <div class="flex flex-wrap items-center gap-3">
+            <div class="relative w-full sm:w-64">
+              <input type="text" id="standard-search" placeholder="Tìm chuẩn mực, từ khóa..." class="w-full pl-9 pr-4 py-2 bg-white border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 shadow-xs">
+              <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Controls: Tier 1 - Status Filters -->
+        <div class="flex flex-wrap items-center gap-2 mb-4 bg-white p-2 rounded-2xl border border-slate-200/80 shadow-xs" id="status-filter-container">
+          <span class="text-xs font-bold text-slate-500 px-3 uppercase tracking-wider">Trạng thái:</span>
+          <button onclick="filterStandardsByStatus('all')" class="status-btn active px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-900 text-white shadow-xs">Tất cả (36)</button>
+          <button onclick="filterStandardsByStatus('Đã học')" class="status-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100">✓ Đã học & Thực hành (16)</button>
+          <button onclick="filterStandardsByStatus('Cần ôn luyện')" class="status-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-amber-50 text-amber-800 border border-amber-300 hover:bg-amber-100">⏳ Cần ôn luyện / Chưa học (20)</button>
+        </div>
+
+        <!-- Filter Controls: Tier 2 - Cluster Filters -->
+        <div class="flex flex-wrap items-center gap-1.5 mb-8 border-b border-slate-200 pb-3" id="cluster-filter-container">
+          <button onclick="filterStandardsByCluster('all')" class="cluster-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-sky-700 text-white shadow-xs">Tất cả cụm (36)</button>
+          <button onclick="filterStandardsByCluster('Foundation')" class="cluster-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100">Nền tảng & Trình bày (7)</button>
+          <button onclick="filterStandardsByCluster('Assets')" class="cluster-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100">Tài sản & Hàng tồn kho (9)</button>
+          <button onclick="filterStandardsByCluster('Tax & Consolidation')" class="cluster-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100">Thuế, Hợp nhất & Ngoại tệ (9)</button>
+          <button onclick="filterStandardsByCluster('Revenue & Leases')" class="cluster-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100">Doanh thu & Dự phòng (5)</button>
+          <button onclick="filterStandardsByCluster('Financial Instruments')" class="cluster-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100">Công cụ TC & Báo cáo (6)</button>
+        </div>
+
+        <!-- Standards Grid -->
+        <div id="standards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Dynamically populated by JS -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION D: PRACTICE LIBRARY (25 Dạng bài EX-01 -> EX-25 & 11 Cases) -->
+    <section id="practice" class="py-16 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-2">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+              Thư viện Dạng bài & Thực hành
+            </div>
+            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Danh mục 25 Dạng bài (EX-01 → EX-25)</h2>
+            <p class="text-slate-600 text-sm mt-1">Đánh dấu tiến độ: Chưa ôn, Đang ôn, Đã ôn, Cần làm lại. Dữ liệu tự động lưu trên trình duyệt của bạn.</p>
+          </div>
+
+          <!-- Quick Filters for Exercises -->
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="filterExercisesByStatus('all')" class="ex-status-btn active px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white">Tất cả (25)</button>
+            <button onclick="filterExercisesByStatus('done')" class="ex-status-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-100 text-emerald-800 hover:bg-emerald-200">Đã ôn (<span id="count-ex-done">0</span>)</button>
+            <button onclick="filterExercisesByStatus('retry')" class="ex-status-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-rose-100 text-rose-800 hover:bg-rose-200">Cần làm lại (<span id="count-ex-retry">0</span>)</button>
+            <button onclick="filterExercisesByStatus('todo')" class="ex-status-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">Chưa ôn (<span id="count-ex-todo">25</span>)</button>
+          </div>
+        </div>
+
+        <!-- Exercise Table Container -->
+        <div class="bg-white border border-slate-200 rounded-2xl shadow-xs overflow-hidden mb-12">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm border-collapse">
+              <thead>
+                <tr class="bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-600 uppercase tracking-wider">
+                  <th class="py-3.5 px-4 w-20">Trạng thái</th>
+                  <th class="py-3.5 px-4 w-20 font-mono">Mã bài</th>
+                  <th class="py-3.5 px-4">Tên dạng bài tập</th>
+                  <th class="py-3.5 px-4 w-32">Chuẩn mực</th>
+                  <th class="py-3.5 px-4 w-36">Kỹ năng</th>
+                  <th class="py-3.5 px-4 text-right w-36">Thao tác đánh dấu</th>
+                </tr>
+              </thead>
+              <tbody id="exercises-table-body" class="divide-y divide-slate-100">
+                <!-- Dynamically rendered -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SUBSECTION: 11 TYPICAL CASES DATA (Mục 5) -->
+        <div class="mt-12 pt-8 border-t border-slate-200">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+            <div>
+              <span class="text-xs font-bold font-mono px-2 py-0.5 rounded bg-indigo-100 text-indigo-800 uppercase">Case Studies & Numbers</span>
+              <h3 class="text-xl font-bold text-slate-900 mt-1">11 Tình huống & Dữ liệu bài tập tiêu biểu đã làm</h3>
+              <p class="text-xs text-slate-500">Các con số dữ liệu thực hành trong quá trình học (EIR bond, ECL 3-stage, Receivable transfer, IFRS 15, Convertible bond)</p>
+            </div>
+            <span class="text-xs text-slate-400 italic">* Dữ liệu học tập cá nhân, không phải số liệu DN thực tế</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="cases-grid">
+            <!-- Dynamically populated from CASES_DATA -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION E: KNOWLEDGE MAP (Bản đồ liên kết kiến thức) -->
+    <section id="knowledge-map" class="py-16 bg-slate-900 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-950 text-sky-400 border border-sky-800 text-xs font-bold uppercase tracking-wider mb-2">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            Tư duy Tích hợp Chuẩn mực
+          </div>
+          <h2 class="text-3xl font-extrabold text-white tracking-tight">Bản đồ Liên kết Kiến thức</h2>
+          <p class="text-slate-400 text-sm mt-2">
+            Đề thi DipIFR hiếm khi hỏi 1 chuẩn mực độc lập. Điểm mấu chốt là nhận biết mắt xích kết nối giữa các giao dịch xuyên suốt BCTC.
+          </p>
+        </div>
+
+        <!-- Integrated Chains Selector -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-8">
+          <button onclick="selectChain(1)" id="chain-btn-1" class="chain-tab-btn active px-4 py-2 rounded-xl text-xs font-bold bg-sky-600 text-white transition-all shadow-md">
+            Chuỗi 1: Doanh thu & Công nợ (IFRS 15 → IFRS 9 → IFRS 7)
+          </button>
+          <button onclick="selectChain(2)" id="chain-btn-2" class="chain-tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all border border-slate-700">
+            Chuỗi 2: M&A & Hợp nhất (IFRS 3 → IAS 12 → IFRS 10 → IAS 36)
+          </button>
+          <button onclick="selectChain(3)" id="chain-btn-3" class="chain-tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all border border-slate-700">
+            Chuỗi 3: Tài sản & Thuế (IAS 16/38 → IAS 36 → IAS 12)
+          </button>
+          <button onclick="selectChain(4)" id="chain-btn-4" class="chain-tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all border border-slate-700">
+            Chuỗi 4: Công cụ TC toàn diện (IAS 32 → IFRS 9 → IFRS 7 / 13)
+          </button>
+        </div>
+
+        <!-- Dynamic Chain Display Box -->
+        <div id="chain-details-box" class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 mb-10 backdrop-blur">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Cross-Standards Matrix (Bảng liên kết 11 cặp quan hệ) -->
+        <div class="bg-slate-800/50 border border-slate-700/80 rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+            Bảng ma trận quan hệ giữa các chuẩn mực (Cross-Standards Matrix)
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="border-b border-slate-700 text-slate-400 uppercase tracking-wider font-semibold">
+                  <th class="py-2.5 px-3">Cụm kiến thức</th>
+                  <th class="py-2.5 px-3">Chuẩn mực liên kết</th>
+                  <th class="py-2.5 px-3">Bản chất kinh tế & Luồng hạch toán liên kết</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-700/60 text-slate-300 font-medium" id="matrix-table-body">
+                <!-- Dynamically populated from MATRIX_DATA -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION F: EXAM PREP, REVIEW DASHBOARD & QUIZ -->
+    <section id="exam-prep" class="py-16 bg-slate-50 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider mb-2">
+            <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            Trung tâm Ôn thi & Tự kiểm tra
+          </div>
+          <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Khu vực Ôn luyện Chuyên sâu DipIFR</h2>
+          <p class="text-slate-600 text-sm mt-2">
+            Đối chiếu mức tự đánh giá thực tế (ngày 28/08/2026), tập trung giải quyết điểm nghẽn Derecognition (50%), hoàn thành checklist và làm bài kiểm tra trắc nghiệm tình huống bám sát đề thi ACCA.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
+          
+          <!-- Column 1: IFRS 9 Self-Assessment Status (6 topics) -->
+          <div class="lg:col-span-6 bg-white border border-slate-200 rounded-2xl p-6 shadow-xs">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+              <div>
+                <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-sky-500"></span>
+                  Đánh giá năng lực IFRS 9 thực tế
+                </h3>
+                <p class="text-xs text-slate-500">Ghi nhận ngày 28/08/2026 (Tự đánh giá, không phải điểm thi)</p>
+              </div>
+              <span class="text-xs px-2 py-0.5 rounded bg-sky-50 text-sky-700 font-semibold border border-sky-200">Lộ trình 6 buổi</span>
+            </div>
+
+            <div class="space-y-4" id="ifrs9-eval-list">
+              <!-- Dynamically populated from IFRS9_EVAL -->
+            </div>
+
+            <div class="mt-6 p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1.5">
+              <div class="font-semibold text-slate-800 flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Ghi chú về tính trung thực của dữ liệu:
+              </div>
+              <p>• Các chuẩn mực khác (IAS 16, IFRS 15, IFRS 3, v.v.) hiện ghi nhận trạng thái "Đã học" và thực hành dạng bài, hệ thống hiển thị <span class="font-semibold text-slate-700">"Chưa cập nhật % tự đánh giá"</span> theo đúng tinh thần tài liệu, không tự suy diễn số ảo.</p>
+            </div>
+          </div>
+
+          <!-- Column 2: DipIFR Priority Checklist (Mục 6) -->
+          <div class="lg:col-span-6 bg-white border border-slate-200 rounded-2xl p-6 shadow-xs">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+              <div>
+                <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                  Checklist Ôn tập Ưu tiên DipIFR
+                </h3>
+                <p class="text-xs text-slate-500">Các bẫy đề thi và các chủ đề tích hợp bắt buộc phải thành thạo</p>
+              </div>
+              <span id="checklist-progress-badge" class="text-xs px-2 py-0.5 rounded bg-amber-50 text-amber-800 font-mono font-bold border border-amber-200">0/10 Đạt</span>
+            </div>
+
+            <div class="space-y-3" id="checklist-container">
+              <!-- Checklist items rendered by JS -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SUBSECTION: DIPIFR MINI-TEST / KNOWLEDGE CHECKER (8 Scenarios) -->
+        <div class="bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 border border-slate-700 rounded-3xl p-6 sm:p-8 text-white shadow-xl mb-12">
+          
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+            <div>
+              <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold uppercase tracking-wider mb-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                DipIFR Mini Mock Exam • English Questions & Bilingual Explanations
+              </div>
+              <h3 class="text-2xl font-extrabold text-white">DipIFR Mini Mock Exam — Authentic Scenario Practice</h3>
+              <p class="text-slate-400 text-xs sm:text-sm mt-1">Đề thi tình huống bằng tiếng Anh theo chuẩn đề thi ACCA DipIFR. Phần giải thích đáp án được trình bày song ngữ (English & Tiếng Việt) kèm trích dẫn chuẩn mực IFRS chi tiết.</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="text-right">
+                <span class="text-xs text-slate-400 block">Điểm số (Score):</span>
+                <span id="quiz-score" class="font-extrabold text-xl text-amber-400 font-mono">0 / 8 Điểm</span>
+              </div>
+              <button onclick="resetQuiz()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition-colors">
+                Làm lại (Reset)
+              </button>
+            </div>
+          </div>
+
+          <!-- Questions List -->
+          <div class="mt-8 space-y-6" id="quiz-container">
+            <!-- Dynamically populated from QUIZ_QUESTIONS -->
+          </div>
+
+        </div>
+
+        <!-- SUBSECTION: PERSONAL STUDY NOTES & EXPORT -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 pb-3 border-b border-slate-100">
+            <div>
+              <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
+                <svg class="w-5 h-5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                Sổ tay Ghi chú Cá nhân Ôn thi DipIFR
+              </h3>
+              <p class="text-xs text-slate-500">Ghi chép các bẫy đề thi, công thức cần nhớ. Dữ liệu tự động lưu vào trình duyệt (localStorage).</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span id="notes-save-status" class="text-xs text-emerald-600 font-medium hidden">✓ Đã lưu tự động</span>
+              <button onclick="downloadNotes()" class="px-3 py-1.5 rounded-lg bg-sky-50 text-sky-700 border border-sky-200 hover:bg-sky-100 text-xs font-semibold flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Tải về ghi chú (.txt)
+              </button>
+            </div>
+          </div>
+
+          <textarea id="personal-notes" rows="6" placeholder="Viết ghi chú ôn tập tại đây... Ví dụ:
+- Derecognition: Có recourse thì KHÔNG được derecognize, ghi nhận khoản vay có thế chấp (secured borrowing).
+- Debt FVOCI: Lãi suất tính theo EIR ghi vào P/L, ECL ghi vào P/L đối ứng OCI, biến động Fair Value ghi vào OCI!
+- Convertible bond: Liability component = PV của dòng tiền chiết khấu theo market rate của straight debt; Equity = Proceeds - Liability." class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500 leading-relaxed custom-scrollbar"></textarea>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: CHI TIẾT CHUẨN MỰC (STANDARD DETAILS MODAL) -->
+  <div id="standard-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 custom-scrollbar transform transition-all">
+      
+      <!-- Modal Header -->
+      <div class="sticky top-0 bg-white/95 backdrop-blur px-6 py-4 border-b border-slate-100 flex items-center justify-between z-10">
+        <div class="flex items-center gap-3">
+          <span id="modal-code" class="text-sm font-mono font-bold px-2.5 py-1 rounded-lg bg-sky-100 text-sky-800 border border-sky-200">IAS 16</span>
+          <span id="modal-cluster" class="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Assets</span>
+        </div>
+        <button onclick="closeStandardModal()" class="p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 space-y-6">
+        <div>
+          <h3 id="modal-title" class="text-xl font-bold text-slate-900">Property, Plant and Equipment</h3>
+          <p id="modal-desc" class="text-xs text-slate-500 mt-0.5">Tiêu chuẩn ghi nhận, đo lường ban đầu, khấu hao, đánh giá lại và thanh lý tài sản cố định hữu hình.</p>
+        </div>
+
+        <!-- Trạng thái học tập -->
+        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200">
+          <span class="text-xs text-slate-600 font-medium">Trạng thái học tập cá nhân:</span>
+          <div class="flex items-center gap-2">
+            <select id="modal-status-select" onchange="updateModalStandardStatus()" class="text-xs font-semibold py-1 px-2.5 bg-white border border-slate-300 rounded-lg text-slate-700 focus:outline-none focus:ring-1 focus:ring-sky-500">
+              <option value="Đã học">Đã học</option>
+              <option value="Đang ôn tập">Đang ôn tập</option>
+              <option value="Cần luyện thêm">Cần luyện thêm</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Trọng tâm DipIFR -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Trọng tâm cốt lõi đã học
+          </h4>
+          <ul id="modal-focus-list" class="space-y-1.5 text-xs text-slate-700 list-disc list-inside leading-relaxed bg-sky-50/50 p-4 rounded-xl border border-sky-100">
+            <!-- List items -->
+          </ul>
+        </div>
+
+        <!-- Dạng bài tập đã tiếp cận -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+            Dạng bài tập đã thực hành
+          </h4>
+          <div id="modal-exercises-tags" class="flex flex-wrap gap-1.5">
+            <!-- Tags -->
+          </div>
+        </div>
+
+        <!-- Chuẩn mực liên kết -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+            Chuẩn mực liên quan
+          </h4>
+          <p id="modal-related" class="text-xs text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-200 leading-relaxed font-mono">
+            IAS 36, IAS 23, IAS 20, IAS 12
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+        <a id="modal-ifrs-link" href="#" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-sky-50 text-sky-700 hover:bg-sky-100 text-xs font-semibold border border-sky-200 transition-colors">
+          <svg class="w-3.5 h-3.5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          Tra cứu chuẩn mực gốc (ifrs.org) ↗
+        </a>
+        <button onclick="closeStandardModal()" class="px-5 py-2 rounded-xl bg-slate-800 text-white text-xs font-semibold hover:bg-slate-700 transition-colors">
+          Đóng cửa sổ
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-1 text-center md:text-left">
+        <div class="flex items-center justify-center md:justify-start gap-2 font-bold text-white text-sm">
+          <span>IFRS Learning Hub</span>
+          <span class="text-sky-400 font-mono text-xs">| Ôn thi DipIFR</span>
+        </div>
+        <p class="text-slate-500">Xây dựng dựa trên hồ sơ học tập và thư viện bài tập IFRS thực tế.</p>
+        <p class="text-slate-600">Nguyên tắc: Giải thích bằng tiếng Việt, giữ nguyên thuật ngữ chuyên môn tiếng Anh.</p>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-4 text-slate-400">
+        <a href="#hero" class="hover:text-white transition-colors">Về đầu trang</a>
+        <span>•</span>
+        <a href="#standards" class="hover:text-white transition-colors">Chuẩn mực</a>
+        <span>•</span>
+        <a href="#practice" class="hover:text-white transition-colors">25 Dạng bài</a>
+        <span>•</span>
+        <a href="#knowledge-map" class="hover:text-white transition-colors">Bản đồ liên kết</a>
+        <span>•</span>
+        <a href="#exam-prep" class="hover:text-white transition-colors">Thi thử DipIFR</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT DATA & LOGIC -->
+  <script>
+    /* ==========================================================================
+       1. DATA DEFINITIONS (From IFRS_Learning_Hub.md)
+       ========================================================================== */
+
+    const STANDARDS_DATA = [
+      {
+        code: "Conceptual Framework",
+        name: "Khung Khái niệm cho Báo cáo Tài chính",
+        enName: "Conceptual Framework for Financial Reporting",
+        cluster: "Foundation",
+        status: "Đã học",
+        focus: [
+          "Mục tiêu của báo cáo tài chính mục đích chung.",
+          "Đặc điểm chất lượng: Relevance, Faithful representation; Enhancing characteristics (Comparability, Verifiability, Timeliness, Understandability).",
+          "Định nghĩa 5 yếu tố: Asset, Liability, Equity, Income, Expense.",
+          "Recognition criteria, Derecognition, Measurement bases (Historical cost, Current value: Fair value, Value in use, Current cost).",
+          "Presentation and disclosure.",
+          "Vai trò của Framework khi không có IFRS cụ thể điều chỉnh (IAS 8 hierarchy)."
+        ],
+        exercises: ["EX-01: Nhận diện tài sản, nợ phải trả và điều kiện ghi nhận", "Phân biệt recognition với measurement", "Vận dụng Framework lý giải lựa chọn kế toán"],
+        related: "Nền tảng cho toàn bộ chuẩn mực IAS / IFRS."
+      },
+      {
+        code: "IAS 20",
+        name: "Kế toán Khoản trợ cấp của Chính phủ",
+        enName: "Accounting for Government Grants and Disclosure of Government Assistance",
+        cluster: "Assets",
+        status: "Đã học",
+        focus: [
+          "Government grants vs Government assistance; Điều kiện ghi nhận: Reasonable assurance.",
+          "Grants liên quan đến tài sản (Grants related to assets) và Thu nhập (Grants related to income).",
+          "Phương pháp hoãn lại (Deferred income) vs Bù trừ trực tiếp vào nguyên giá (Netting off against asset).",
+          "Ghi nhận grant trong P/L theo nguyên tắc phù hợp với chi phí liên quan (Matching principle).",
+          "Hoàn trả khoản trợ cấp (Repayment of government grants): điều chỉnh phi hồi tố."
+        ],
+        exercises: ["EX-02: Government grant: asset-related / income-related", "Tính khoản grant ghi nhận theo kỳ", "Xử lý hoàn trả grant"],
+        related: "IAS 16, IAS 38, IAS 12, IAS 37"
+      },
+      {
+        code: "IAS 38",
+        name: "Tài sản Vô hình",
+        enName: "Intangible Assets",
+        cluster: "Assets",
+        status: "Đã học",
+        focus: [
+          "3 tiêu chuẩn cốt lõi: Identifiability, Control, Future economic benefits.",
+          "Giai đoạn nghiên cứu (Research phase) → Toàn bộ ghi nhận Expense.",
+          "Giai đoạn phát triển (Development phase) → Vốn hóa khi thỏa mãn 6 điều kiện PIRATE.",
+          "Initial recognition & Subsequent measurement (Cost model vs Revaluation model - chỉ áp dụng khi có active market).",
+          "Useful life: Finite (khấu hao amortisation) vs Indefinite (cấm khấu hao, phải test impairment hàng năm theo IAS 36).",
+          "Cấm vốn hóa internally generated goodwill, thương hiệu, danh sách khách hàng tự tạo."
+        ],
+        exercises: ["EX-03: Research vs development; vốn hóa intangible asset", "Tính amortisation", "Đánh giá useful life và impairment"],
+        related: "IAS 16, IAS 36, IAS 12, IFRS 3"
+      },
+      {
+        code: "IAS 16",
+        name: "Bất động sản, Nhà xưởng và Thiết bị (PPE)",
+        enName: "Property, Plant and Equipment",
+        cluster: "Assets",
+        status: "Đã học",
+        focus: [
+          "Recognition criteria & Initial cost (Purchase price, directly attributable costs, dismantling/restoration provision).",
+          "Subsequent expenditure (Vốn hóa nếu nâng cao hiệu quả/thời gian sử dụng, ngược lại ghi chi phí).",
+          "Cost model vs Revaluation model; Xử lý Revaluation Surplus (ghi nhận OCI, trích chuyển sang Retained Earnings theo mức chênh lệch khấu hao).",
+          "Depreciation, Component accounting, Useful life & Residual value.",
+          "Derecognition và lãi/lỗ khi thanh lý (Disposal gain/loss)."
+        ],
+        exercises: ["EX-04: PPE cost, depreciation, revaluation, disposal", "Tính khấu hao theo component", "Revaluation và xử lý thặng dư"],
+        related: "IAS 36, IAS 23, IAS 20, IAS 12, IFRS 16"
+      },
+      {
+        code: "IAS 36",
+        name: "Suy giảm Giá trị Tài sản",
+        enName: "Impairment of Assets",
+        cluster: "Assets",
+        status: "Đã học",
+        focus: [
+          "Indicators of impairment (External & Internal) & Yêu cầu test hàng năm (Goodwill, tài sản vô hình vô thời hạn).",
+          "Recoverable amount = Higher of [Value in use (DCF), Fair value less costs of disposal].",
+          "Đơn vị tạo tiền (Cash-Generating Units - CGUs).",
+          "Thứ tự phân bổ tổn thất Impairment: (1) Goodwill trước tiên, (2) Các tài sản khác trong CGU theo tỷ lệ giá trị còn lại (không được giảm xuống dưới recoverable amount/0).",
+          "Reversal of impairment: Được hoàn nhập tài sản thông thường tối đa về mức carrying amount nếu chưa từng bị impairment; CẤM hoàn nhập cho Goodwill."
+        ],
+        exercises: ["EX-05: Recoverable amount, CGU, impairment allocation", "Tính impairment loss", "Phân bổ impairment trong CGU", "Goodwill impairment"],
+        related: "IAS 16, IAS 38, IFRS 3, IAS 12"
+      },
+      {
+        code: "IAS 12",
+        name: "Thuế Thu nhập Doanh nghiệp",
+        enName: "Income Taxes",
+        cluster: "Tax & Consolidation",
+        status: "Đã học",
+        focus: [
+          "Current tax & Deferred tax.",
+          "Carrying Amount (CA) vs Tax Base (TB).",
+          "Taxable temporary differences (CA > TB tài sản hoặc CA < TB nợ) → Phát sinh Deferred Tax Liability (DTL).",
+          "Deductible temporary differences (CA < TB tài sản hoặc CA > TB nợ) → Phát sinh Deferred Tax Asset (DTA) khi có probable taxable profits.",
+          "Tax effect của Revaluation (vào OCI), Business combinations (điều chỉnh Goodwill), và Leases."
+        ],
+        exercises: ["EX-06: Tax base, temporary differences, DTA/DTL", "Deferred tax từ revaluation", "Deferred tax trong M&A"],
+        related: "IAS 16, IAS 36, IFRS 3, IFRS 16"
+      },
+      {
+        code: "IFRS 3",
+        name: "Hợp nhất Kinh doanh",
+        enName: "Business Combinations",
+        cluster: "Tax & Consolidation",
+        status: "Đã học",
+        focus: [
+          "Xác định bên mua (Acquirer) và ngày mua (Acquisition date).",
+          "Acquisition method: Consideration transferred at Fair Value (tiền, cổ phiếu phát hành, nợ hoãn lại, contingent consideration).",
+          "Cấm vốn hóa Acquisition-related costs (chi phí tư vấn, luật sư → tính thẳng vào P/L).",
+          "Đo lường tài sản thuần có thể xác định (Identifiable net assets) theo Fair Value tại ngày mua; Deferred tax trên FV adjustments.",
+          "Goodwill = Consideration + NCI - Net Identifiable Assets; Bargain purchase gain ghi nhận ngay vào P/L.",
+          "Đo lường NCI: Proportionate share (partial goodwill) vs Fair Value method (full goodwill)."
+        ],
+        exercises: ["EX-07: Acquisition method, goodwill, NCI, deferred tax", "Tính consideration và net assets", "FV adjustments & deferred tax"],
+        related: "IFRS 10, IAS 28, IAS 12, IAS 36, IFRS 13"
+      },
+      {
+        code: "IAS 23",
+        name: "Chi phí Đi vay",
+        enName: "Borrowing Costs",
+        cluster: "Assets",
+        status: "Đã học",
+        focus: [
+          "Qualifying asset: Tài sản cần thời gian đáng kể để hoàn thành đưa vào sử dụng hoặc bán.",
+          "Borrowing costs eligible for capitalisation: Vốn vay riêng biệt (Specific borrowings - trừ thu nhập đầu tư tạm thời) vs Vốn vay chung (General borrowings - theo weighted average capitalisation rate).",
+          "3 mốc quan trọng: Commencement (bắt đầu), Suspension (tạm dừng khi thi công bị gián đoạn bất thường), Cessation (kết thúc khi tài sản hoàn thành về cơ bản)."
+        ],
+        exercises: ["EX-08: Borrowing costs capitalization", "Xác định qualifying asset", "Tính borrowing costs vốn hóa vs chi phí P/L"],
+        related: "IAS 16, IAS 38, IAS 12"
+      },
+      {
+        code: "IFRS 10",
+        name: "Báo cáo Tài chính Hợp nhất",
+        enName: "Consolidated Financial Statements",
+        cluster: "Tax & Consolidation",
+        status: "Đã học",
+        focus: [
+          "Định nghĩa Control: 3 yếu tố (Power over investee, Exposure to variable returns, Ability to use power to affect returns).",
+          "Quy trình hợp nhất và 6 bảng làm việc kinh điển DipIFR (W1 Group Structure, W2 Net Assets of Sub, W3 Goodwill, W4 NCI, W5 Retained Earnings, W6 Consolidation Adjustments).",
+          "Loại trừ giao dịch nội bộ (Intra-group balances, Intra-group trading).",
+          "Unrealised profit (PURP) trong hàng tồn kho và tài sản cố định chuyển nhượng nội bộ."
+        ],
+        exercises: ["EX-09: Control assessment và consolidation W1-W6", "Tính goodwill & NCI", "Điều chỉnh PURP và số dư nội bộ"],
+        related: "IFRS 3, IAS 28, IAS 12, IAS 36"
+      },
+      {
+        code: "IAS 28",
+        name: "Đầu tư vào Công ty Liên kết & Liên doanh",
+        enName: "Investments in Associates and Joint Ventures",
+        cluster: "Tax & Consolidation",
+        status: "Đã học",
+        focus: [
+          "Significant influence (thường sở hữu từ 20% đến 50% quyền biểu quyết).",
+          "Phương pháp vốn chủ sở hữu (Equity method): Giá vốn ban đầu + Phần chia lãi/lỗ sau ngày mua - Cổ tức nhận được.",
+          "Điều chỉnh PURP giao dịch upstream và downstream với associate.",
+          "Đánh giá suy giảm giá trị khoản đầu tư liên kết (Impairment test theo IAS 36 cho toàn bộ carrying amount)."
+        ],
+        exercises: ["EX-10: Equity method và associate investment", "Tính carrying amount theo equity method", "Ghi nhận share of profit/OCI"],
+        related: "IFRS 10, IFRS 3, IAS 36"
+      },
+      {
+        code: "IFRS 15",
+        name: "Doanh thu từ Hợp đồng với Khách hàng",
+        enName: "Revenue from Contracts with Customers",
+        cluster: "Revenue & Leases",
+        status: "Đã học",
+        focus: [
+          "Mô hình 5 bước: (1) Identify contract, (2) Identify distinct Performance Obligations (PO), (3) Determine Transaction Price, (4) Allocate price theo Stand-alone selling prices, (5) Recognize revenue khi thỏa mãn PO (over time vs point in time).",
+          "Variable consideration & Constraint (chỉ ghi nhận khi highly probable không bị đảo ngược trọng yếu).",
+          "Significant financing component (tách doanh thu và interest income/expense khi trả chậm >1 năm).",
+          "Contract modifications: Hợp đồng riêng biệt, Chấm dứt cũ tạo mới, hay Điều chỉnh lũy kế.",
+          "Repurchase agreements: Call option, Forward, Put option (kế toán như lease hoặc financing)."
+        ],
+        exercises: [
+          "EX-11: Five-step revenue model và allocation",
+          "EX-12: Variable consideration và constraint",
+          "EX-13: Contract modification và repurchase agreements",
+          "Case ABC (máy móc $650k gồm lắp đặt/bảo trì)",
+          "Case XYZ ($1.2m trả sau 18 tháng, cash price $1.12m)",
+          "Case Bonus 70% $556k"
+        ],
+        related: "IFRS 9, IFRS 7, IAS 12"
+      },
+      {
+        code: "IFRS 16",
+        name: "Thuê Tài sản",
+        enName: "Leases",
+        cluster: "Revenue & Leases",
+        status: "Đã học",
+        focus: [
+          "Định nghĩa Lease: Quyền kiểm soát việc sử dụng tài sản xác định trong một khoảng thời gian.",
+          "Lessee accounting: Ghi nhận Right-of-Use (ROU) Asset và Lease Liability tại ngày bắt đầu.",
+          "Initial measurement: Lease liability = PV của lease payments; ROU Asset = Lease liability + initial direct costs + dismantling provision - lease incentives.",
+          "Subsequent measurement: Lease liability phân bổ theo lãi suất thực (interest expense); ROU Asset trích khấu hao (depreciation).",
+          "Exemptions: Short-term leases (<12 tháng) và Low-value assets (<$5,000) được hạch toán thẳng vào chi phí.",
+          "Liên hệ IAS 12: Phát sinh temporary differences giữa kế toán và thuế."
+        ],
+        exercises: ["EX-14: Lease liability, ROU asset, subsequent measurement", "Lập bảng khấu hao và trả nợ thuê", "Kết nối IFRS 16 với IAS 12"],
+        related: "IAS 16, IAS 12, IFRS 9"
+      },
+      {
+        code: "IFRS 9",
+        name: "Công cụ Tài chính",
+        enName: "Financial Instruments",
+        cluster: "Financial Instruments",
+        status: "Đang ôn tập",
+        focus: [
+          "Classification tài sản tài chính dựa trên: Business Model Test & SPPI Test (Solely Payments of Principal & Interest).",
+          "3 nhóm đo lường: Amortised Cost, FVOCI (Debt FVOCI có recycling; Equity FVOCI không recycling), FVTPL.",
+          "Effective Interest Rate (EIR): Lãi suất thực phân bổ chiết khấu/phụ trội, tách biệt với coupon cash flow.",
+          "Expected Credit Loss (ECL) 3-stage model: Stage 1 (12-month ECL), Stage 2 (Lifetime ECL, rủi ro tăng đáng kể), Stage 3 (Lifetime ECL, credit-impaired). Simplified approach cho trade receivables (Provision matrix).",
+          "Financial liabilities: Đo lường theo Amortised cost hoặc FVTPL (biến động do own credit risk ghi vào OCI).",
+          "Derecognition (Dừng ghi nhận): Chuyển giao contractual rights, Risks and rewards, Control, Recourse vs Non-recourse."
+        ],
+        exercises: [
+          "EX-15: Business model + SPPI classification",
+          "EX-16: Amortised cost và EIR schedule",
+          "EX-17: Debt FVOCI: EIR + FV movement + ECL",
+          "EX-18: FVTPL subsequent fair value measurement",
+          "EX-19: ECL 3-stage model và provision matrix",
+          "EX-20: Financial liabilities, own credit risk",
+          "EX-21: Derecognition / transfer of receivables (50% - CẦN ÔN KỸ!)"
+        ],
+        related: "IAS 32, IFRS 7, IFRS 13, IFRS 15"
+      },
+      {
+        code: "IAS 32",
+        name: "Công cụ Tài chính: Trình bày",
+        enName: "Financial Instruments: Presentation",
+        cluster: "Financial Instruments",
+        status: "Đã học",
+        focus: [
+          "Phân biệt Nợ tài chính (Financial Liability) vs Vốn chủ sở hữu (Equity) dựa trên bản chất hợp đồng (Substance over form).",
+          "Nghĩa vụ chuyển giao tiền hoặc tài sản tài chính khác (Contractual obligation to deliver cash).",
+          "Fixed-for-fixed principle: Thanh toán bằng số lượng cổ phiếu cố định cho số tiền cố định mới là Equity.",
+          "Compound financial instruments (Trái phiếu chuyển đổi - Convertible bonds): Tách riêng Liability component (FV của straight debt tương đương) và Equity component (phần dôi dư - residual).",
+          "Phân bổ Transaction costs tỷ lệ thuận giữa Liability và Equity components.",
+          "Điều kiện bù trừ tài sản và nợ tài chính (Offsetting criteria)."
+        ],
+        exercises: [
+          "EX-22: Liability vs equity; fixed-for-fixed",
+          "EX-23: Compound financial instrument allocation",
+          "Case Convertible bond $12m, coupon 4%, debt FV $10.5m, costs $240k",
+          "Case split liability $9.2m & equity $0.8m"
+        ],
+        related: "IFRS 9, IFRS 7, IFRS 13"
+      },
+      {
+        code: "IFRS 7",
+        name: "Công cụ Tài chính: Thuyết minh",
+        enName: "Financial Instruments: Disclosures",
+        cluster: "Financial Instruments",
+        status: "Đã học",
+        focus: [
+          "Mục tiêu: Giúp người đọc BCTC đánh giá mức độ rủi ro phát sinh từ các công cụ tài chính.",
+          "3 loại rủi ro trọng yếu: Credit risk (Rủi ro tín dụng), Liquidity risk (Rủi ro thanh khoản), Market risk (Rủi ro thị trường - lãi suất, tỷ giá, giá cả).",
+          "Exposure to credit risk, Credit quality, và Bảng đối chiếu biến động quỹ dự phòng ECL.",
+          "Phân biệt rõ: IFRS 9 quy định Ghi nhận & Đo lường (Recognition & Measurement); IFRS 7 quy định Thuyết minh (Disclosures)."
+        ],
+        exercises: ["EX-24: Credit risk disclosures và ECL disclosures", "Phân biệt IFRS 9 vs IFRS 7", "Thuyết minh theo từng Stage"],
+        related: "IFRS 9, IAS 32, IFRS 13"
+      },
+      {
+        code: "IFRS 13",
+        name: "Đo lường Giá trị Hợp lý",
+        enName: "Fair Value Measurement",
+        cluster: "Financial Instruments",
+        status: "Đã học",
+        weight: "Trọng tâm cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-13-fair-value-measurement/",
+        focus: [
+          "Định nghĩa Fair Value: Giá thoát (Exit price) trong một giao dịch có trật tự giữa các bên tham gia thị trường tại ngày đo lường.",
+          "Principal market (Thị trường chính) vs Most advantageous market (Thị trường có lợi nhất).",
+          "3 phương pháp định giá: Market approach (thị trường), Income approach (thu nhập - DCF), Cost approach (chi phí thay thế).",
+          "Fair Value Hierarchy (3 cấp bậc): Level 1 (Giá niêm yết trên thị trường hoạt động), Level 2 (Dữ liệu đầu vào quan sát được trực tiếp/gián tiếp), Level 3 (Dữ liệu đầu vào không quan sát được - unobservable).",
+          "Highest and best use áp dụng cho non-financial assets."
+        ],
+        exercises: ["EX-25: Fair value hierarchy và valuation approaches", "Phân loại input Level 1/2/3", "Thuyết minh Level 3"],
+        related: "IFRS 3, IFRS 9, IAS 16, IAS 38, IAS 36"
+      },
+      // --- CÁC CHUẨN MỰC CHƯA HỌC / CẦN ÔN LUYỆN THEO GIÁO TRÌNH DIPIFR (LINK IFRS.ORG 2026) ---
+      {
+        code: "IAS 1",
+        name: "Trình bày Báo cáo Tài chính",
+        enName: "Presentation of Financial Statements",
+        cluster: "Foundation",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm rất cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ias-1-presentation-of-financial-statements/",
+        focus: [
+          "Mục tiêu BCTC, nguyên tắc Cơ sở dồn tích (Accrual basis) và Hoạt động liên tục (Going concern).",
+          "Phân loại Tài sản và Nợ phải trả Ngắn hạn vs Dài hạn (Current vs Non-current) theo chu kỳ kinh doanh bình thường hoặc kỳ hạn 12 tháng.",
+          "Cấu trúc Báo cáo P/L và Báo cáo Thu nhập toàn diện khác (OCI): Phân loại rành mạch các khoản OCI ĐƯỢC tái phân loại (recycled) sang P/L (Debt FVOCI, Cash flow hedges, FCTR) và các khoản CẤM tái phân loại sang P/L (Revaluation surplus, Equity FVOCI, Actuarial remeasurements).",
+          "Nguyên tắc trọng yếu (Materiality) và Nghiêm cấm bù trừ tài sản với nợ hoặc thu nhập với chi phí trừ khi chuẩn mực khác cho phép."
+        ],
+        exercises: ["Phân loại Current vs Non-current", "Trình bày Báo cáo OCI và quy tắc Recycling", "Thuyết minh giả định Going concern"],
+        related: "Conceptual Framework, IAS 8, IAS 10, IAS 7, IFRS 18"
+      },
+      {
+        code: "IAS 2",
+        name: "Hàng tồn kho",
+        enName: "Inventories",
+        cluster: "Assets",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ias-2-inventories/",
+        focus: [
+          "Xác định nguyên giá hàng tồn kho: Giá mua, Chi phí chế biến, Chi phí liên quan trực tiếp.",
+          "Các chi phí BỊ LOẠI TRỪ khỏi giá thành: Chi phí lãng phí nguyên vật liệu/nhân công bất thường, Chi phí lưu kho không cần thiết, Chi phí bán hàng và Chi phí quản lý chung.",
+          "Quy tắc đo lường cuối kỳ: Lower of Cost and Net Realizable Value (NRV = Giá bán ước tính - Chi phí hoàn thành - Chi phí bán hàng).",
+          "Phương pháp tính giá: FIFO hoặc Bình quân gia quyền (Weighted Average); CẤM TUYỆT ĐỐI phương pháp LIFO trong IFRS.",
+          "Kết nối với Hợp nhất IFRS 10: Xử lý loại trừ lãi chưa thực hiện (PURP) trong hàng tồn kho chuyển nhượng nội bộ."
+        ],
+        exercises: ["Tính NRV và trích lập giảm giá tồn kho", "Loại trừ chi phí không hợp lệ khỏi giá thành", "Điều chỉnh PURP hàng tồn kho hợp nhất"],
+        related: "IFRS 15, IFRS 10, IAS 16, IAS 23"
+      },
+      {
+        code: "IAS 7",
+        name: "Báo cáo Lưu chuyển Tiền tệ",
+        enName: "Statement of Cash Flows",
+        cluster: "Foundation",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ias-7-statement-of-cash-flows/",
+        focus: [
+          "Phân loại 3 luồng tiền: Hoạt động kinh doanh (Operating), Hoạt động đầu tư (Investing), Hoạt động tài chính (Financing).",
+          "Phương pháp trực tiếp (Direct method) vs Phương pháp gián tiếp (Indirect method) đối với dòng tiền kinh doanh.",
+          "Chính sách nhất quán xử lý Lãi vay nhận/trả, Cổ tức nhận/trả, và Thuế TNDN (mặc định là Operating trừ khi liên quan trực tiếp đến Investing/Financing).",
+          "Thuyết minh các giao dịch phi tiền tệ (Non-cash transactions: thuê tài sản IFRS 16, mua tài sản phát hành cổ phiếu) và đối chiếu biến động nợ tài chính (Reconciliation of liabilities from financing activities)."
+        ],
+        exercises: ["Lập lưu chuyển tiền thuần từ HĐKD theo PP gián tiếp", "Tính dòng tiền chi mua PPE và thu thanh lý", "Đối chiếu dòng tiền nợ vay tài chính"],
+        related: "IAS 1, IFRS 16, IFRS 7"
+      },
+      {
+        code: "IAS 8",
+        name: "Chính sách kế toán, Thay đổi Ước tính và Sai sót",
+        enName: "Accounting Policies, Changes in Accounting Estimates and Errors",
+        cluster: "Foundation",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ias-8-accounting-policies-changes-in-accounting-estimates-and-errors/",
+        focus: [
+          "Lựa chọn và áp dụng chính sách kế toán: Tham chiếu chuẩn mực cụ thể → Thang phân cấp IAS 8 (IAS 8 hierarchy) khi thiếu chuẩn mực.",
+          "Phân biệt rạch ròi: Thay đổi chính sách kế toán (áp dụng HỒI TỐ - retrospective) vs Thay đổi ước tính kế toán (áp dụng PHI HỒI TỐ - prospective, ví dụ thay đổi thời gian khấu hao, tỷ lệ trích lập dự phòng).",
+          "Xử lý sai sót trọng yếu kỳ trước (Prior period material errors): Hồi tố điều chỉnh số dư đầu kỳ của Bảng CĐKT và Báo cáo P/L kỳ so sánh.",
+          "Quy định về tính bất khả thi trong việc áp dụng hồi tố."
+        ],
+        exercises: ["Phân loại tình huống: Chính sách vs Ước tính", "Hạch toán sửa sai sót kỳ trước vào Retained Earnings", "Điều chỉnh phi hồi tố khấu hao IAS 16"],
+        related: "Conceptual Framework, IAS 1, IAS 16, IAS 37"
+      },
+      {
+        code: "IAS 10",
+        name: "Sự kiện sau ngày kết thúc kỳ kế toán",
+        enName: "Events after the Reporting Period",
+        cluster: "Foundation",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ias-10-events-after-the-reporting-period/",
+        focus: [
+          "Phạm vi thời gian: Từ ngày kết thúc kỳ báo cáo đến ngày BCTC được phê duyệt phát hành (Authorised for issue).",
+          "Sự kiện cần điều chỉnh (Adjusting events): Cung cấp bằng chứng bổ sung về điều kiện ĐÃ TỒN TẠI tại ngày báo cáo (ví dụ: khách hàng phá sản, phán quyết tòa án về vụ kiện cũ, phát hiện gian lận sai sót) → ĐIỀU CHỈNH SỐ LIỆU BCTC.",
+          "Sự kiện không điều chỉnh (Non-adjusting events): Phát sinh hoàn toàn SAU ngày báo cáo (ví dụ: cháy kho, sụt giảm giá cổ phiếu, sáp nhập M&A mới) → KHÔNG ĐIỀU CHỈNH, CHỈ THUYẾT MINH nếu trọng yếu.",
+          "Ngoại lệ Going Concern: Nếu sự kiện sau ngày báo cáo cho thấy DN không còn hoạt động liên tục, BẮT BUỘC lập BCTC trên cơ sở giải thể/thanh lý."
+        ],
+        exercises: ["Phân loại Adjusting vs Non-adjusting events", "Hạch toán điều chỉnh vụ kiện IAS 37 sau ngày báo cáo", "Đánh giá giả định Going concern"],
+        related: "IAS 1, IAS 37, IAS 2, IFRS 9"
+      },
+      {
+        code: "IAS 19",
+        name: "Phúc lợi Nhân viên",
+        enName: "Employee Benefits",
+        cluster: "Revenue & Leases",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm rất cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ias-19-employee-benefits/",
+        focus: [
+          "Phúc lợi ngắn hạn: Tiền lương, nghỉ phép có lương, thưởng ngắn hạn.",
+          "Phúc lợi sau khi thôi việc: Quỹ đóng góp xác định (Defined Contribution Plan) vs Quỹ phúc lợi xác định (Defined Benefit Plan).",
+          "Kế toán Quỹ phúc lợi xác định (Defined Benefit Accounting):",
+          "• Nghĩa vụ nợ thuần / Tài sản thuần = Giá trị hiện tại nghĩa vụ (PV of Obligation) - Giá trị hợp lý tài sản quỹ (Fair Value of Plan Assets).",
+          "• Tách bạch hạch toán: Chi phí dịch vụ (Service costs) và Lãi vay thuần (Net interest) ghi nhận vào P/L.",
+          "• Tái đo lường (Remeasurements - Lãi/lỗ tính toán bảo hiểm & Chênh lệch lợi suất thực tài sản quỹ): BẮT BUỘC ghi nhận vào OCI và KHÔNG BAO GIỜ được tái phân loại (recycle) sang P/L."
+        ],
+        exercises: ["Tính Net Defined Benefit Liability/Asset", "Lập bảng tách bạch chi phí P/L và Remeasurements OCI", "Hạch toán Past service cost và Curtailment"],
+        related: "IAS 1, IAS 12, IAS 26, IAS 37"
+      },
+      {
+        code: "IAS 21",
+        name: "Ảnh hưởng của việc Thay đổi Tỷ giá Hối đoái",
+        enName: "The Effects of Changes in Foreign Exchange Rates",
+        cluster: "Tax & Consolidation",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm rất cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ias-21-the-effects-of-changes-in-foreign-exchange-rates/",
+        focus: [
+          "Xác định Đồng tiền chức năng (Functional currency) dựa trên các yếu tố cơ bản (Primary indicators: giá bán, chi phí nhân công vật liệu) và thứ cấp.",
+          "Giao dịch ngoại tệ đơn lẻ: Ghi nhận ban đầu theo tỷ giá giao dịch; Cuối kỳ: Khoản mục tiền tệ (Monetary items) đánh giá lại theo tỷ giá đóng cửa (Closing rate) vào P/L; Khoản mục phi tiền tệ (Non-monetary) theo giá gốc giữ nguyên tỷ giá lịch sử.",
+          "Quy đổi Báo cáo tài chính của Đơn vị nước ngoài để hợp nhất (Consolidation of Foreign Operation):",
+          "• Tài sản & Nợ phải trả quy đổi theo Tỷ giá đóng cửa (Closing rate).",
+          "• Doanh thu & Chi phí quy đổi theo Tỷ giá ngày giao dịch hoặc Tỷ giá bình quân (Average rate).",
+          "• Chênh lệch tỷ giá quy đổi phát sinh ghi nhận vào OCI (Foreign Currency Translation Reserve - FCTR) và chia cho NCI."
+        ],
+        exercises: ["Đánh giá lại khoản phải thu/phải trả ngoại tệ cuối kỳ", "Quy đổi BCTC công ty con nước ngoài sang Presentation currency", "Tính Goodwill và FCTR lũy kế trong consolidated equity"],
+        related: "IFRS 10, IFRS 3, IAS 12, IFRS 9"
+      },
+      {
+        code: "IAS 24",
+        name: "Thuyết minh về các Bên liên quan",
+        enName: "Related Party Disclosures",
+        cluster: "Tax & Consolidation",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ias-24-related-party-disclosures/",
+        focus: [
+          "Nhận diện Bên liên quan (Related party): Cá nhân (Thành viên ban quản lý chủ chốt - KMP, cổ đông lớn có quyền kiểm soát/ảnh hưởng đáng kể, người thân thích trong gia đình) và Doanh nghiệp (Cty mẹ, cty con, liên kết, liên doanh, cty chịu chung sự kiểm soát).",
+          "Các trường hợp KHÔNG PHẢI là bên liên quan: Nhà cung cấp cấp vốn thông thường, Khách hàng chiếm tỷ trọng lớn đơn thuần do giao dịch kinh doanh, Cơ quan nhà nước, Công đoàn.",
+          "Yêu cầu thuyết minh: Bản chất mối quan hệ, Giá trị các giao dịch trong kỳ, Số dư công nợ còn lại, Cam kết bảo lãnh, và Dự phòng nợ xấu liên quan.",
+          "Thuyết minh thù lao ban điều hành (Key management personnel compensation) theo 5 nhóm phúc lợi."
+        ],
+        exercises: ["Phân tích tình huống nhận diện Bên liên quan", "Yêu cầu thuyết minh giao dịch mua bán tài sản với Giám đốc", "Thuyết minh bảo lãnh tín dụng nội bộ"],
+        related: "IFRS 10, IAS 28, IFRS 11, IAS 19"
+      },
+      {
+        code: "IAS 27",
+        name: "Báo cáo Tài chính Riêng",
+        enName: "Separate Financial Statements",
+        cluster: "Tax & Consolidation",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm trung bình",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ias-27-separate-financial-statements/",
+        focus: [
+          "Quy định khi công ty mẹ lập Báo cáo tài chính riêng biệt ngoài Báo cáo tài chính hợp nhất.",
+          "Chính sách kế toán cho các khoản đầu tư vào Cty con, Cty liên kết và Liên doanh trên BCTC riêng: (1) Theo Giá gốc (Cost), (2) Theo IFRS 9 (Fair value), hoặc (3) Theo Phương pháp vốn chủ sở hữu (Equity method theo IAS 28).",
+          "Nguyên tắc nhất quán: Phải áp dụng cùng một phương pháp cho từng loại hình đầu tư.",
+          "Ghi nhận cổ tức nhận được từ công ty con vào P/L khi quyền nhận cổ tức được xác lập."
+        ],
+        exercises: ["Kế toán khoản đầu tư cty con trên BCTC riêng theo Cost vs FV", "Hạch toán cổ tức nhận được từ subsidiary", "Đối chiếu BCTC riêng và BCTC hợp nhất"],
+        related: "IFRS 10, IAS 28, IFRS 9"
+      },
+      {
+        code: "IAS 33",
+        name: "Lãi trên Cổ phiếu (EPS)",
+        enName: "Earnings Per Share",
+        cluster: "Financial Instruments",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ias-33-earnings-per-share/",
+        focus: [
+          "Phạm vi: Bắt buộc đối với các đơn vị có cổ phiếu niêm yết hoặc đang trong quá trình niêm yết công khai.",
+          "Lãi cơ bản trên cổ phiếu (Basic EPS) = Lợi nhuận sau thuế phân bổ cho cổ đông phổ thông / Số lượng cổ phiếu phổ thông bình quân gia quyền trong kỳ (WANOS).",
+          "Điều chỉnh số lượng cổ phiếu bình quân: Phát hành thưởng (Bonus issue), Tách/gộp cổ phiếu (Share split), và Phát hành quyền mua cổ phần có yếu tố thưởng (Rights issue - tính Theoretical ex-rights price TERP).",
+          "Lãi suy giảm trên cổ phiếu (Diluted EPS): Xem xét tác động tiềm tàng của Trái phiếu chuyển đổi (Convertible bonds), Cổ phiếu ưu đãi chuyển đổi, Quyền chọn cổ phiếu (Share options / Warrants) sử dụng phương pháp Cổ phiếu quỹ (Treasury stock method).",
+          "Nguyên tắc chống suy giảm (Antidilutive): Bỏ qua các công cụ làm tăng EPS hoặc giảm lỗ trên mỗi cổ phiếu."
+        ],
+        exercises: ["Tính WANOS khi có Rights issue và Bonus issue", "Tính Diluted EPS cho trái phiếu chuyển đổi (tiết kiệm chi phí lãi sau thuế)", "Tính tác động quyền chọn Share options theo treasury method"],
+        related: "IAS 32, IFRS 2, IFRS 9"
+      },
+      {
+        code: "IAS 34",
+        name: "Báo cáo Tài chính Giữa niên độ",
+        enName: "Interim Financial Reporting",
+        cluster: "Foundation",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm trung bình",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ias-34-interim-financial-reporting/",
+        focus: [
+          "Nội dung tối thiểu của Báo cáo tài chính tóm lược giữa niên độ (Condensed financial statements).",
+          "Nguyên tắc đo lường: Áp dụng cùng chính sách kế toán như BCTC năm.",
+          "Doanh thu có tính chất thời vụ hoặc chu kỳ (Seasonal / Cyclical revenue): Phải ghi nhận khi phát sinh, KHÔNG ĐƯỢC phân bổ trước hoặc hoãn lại.",
+          "Chi phí phát sinh không đồng đều trong năm: Chỉ được trích trước hoặc hoãn lại nếu thỏa mãn điều kiện ghi nhận nợ phải trả hoặc tài sản tại ngày kết thúc kỳ giữa niên độ.",
+          "Chi phí thuế thu nhập doanh nghiệp giữa niên độ: Ước tính dựa trên Thuế suất hiệu dụng bình quân cả năm dự kiến (Weighted-average annual effective income tax rate)."
+        ],
+        exercises: ["Ước tính thuế TNDN cho BCTC quý theo effective rate", "Xử lý chi phí quảng cáo và bảo trì lớn phát sinh giữa năm", "Thuyết minh tính chất thời vụ"],
+        related: "IAS 1, IAS 12, IAS 36, IAS 8"
+      },
+      {
+        code: "IAS 37",
+        name: "Dự phòng, Nợ tiềm tàng và Tài sản tiềm tàng",
+        enName: "Provisions, Contingent Liabilities and Contingent Assets",
+        cluster: "Revenue & Leases",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm CỰC KỲ CAO",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ias-37-provisions-contingent-liabilities-and-contingent-assets/",
+        focus: [
+          "3 điều kiện BẮT BUỘC để trích lập Dự phòng (Provision): (1) Nghĩa vụ hiện tại (pháp lý hoặc liên đới - legal or constructive) do sự kiện quá khứ, (2) Khả năng dòng tiền chảy ra để thanh toán là chắc chắn hơn không (>50% probable outflow), (3) Ước tính được một cách đáng tin cậy.",
+          "Hợp đồng có rủi ro lớn (Onerous contracts): Chi phí không thể tránh khỏi vượt quá lợi ích kinh tế (Trích lập dự phòng bằng mức thấp hơn giữa Chi phí thực hiện hợp đồng và Tiền bồi thường chấm dứt). Phải kiểm tra suy giảm tài sản chuyên dùng trước khi lập dự phòng.",
+          "Chi phí tái cơ cấu (Restructuring provisions): Chỉ được trích lập khi có Kế hoạch chi tiết chính thức và Đã tạo kỳ vọng hợp lý cho các bên liên quan trước ngày kết thúc kỳ kế toán (thông báo công khai hoặc bắt đầu thực hiện). KHÔNG được trích lập chi phí đào tạo lại nhân viên ở lại hay chi phí tiếp thị chuyển địa điểm.",
+          "Nợ tiềm tàng (Contingent liabilities): Thuyết minh trên BCTC trừ khi khả năng xảy ra là rất thấp (remote).",
+          "Tài sản tiềm tàng (Contingent assets): Chỉ thuyết minh khi khả năng thu hồi là probable (>50%); chỉ ghi nhận tài sản khi thực tế gần như chắc chắn (virtually certain)."
+        ],
+        exercises: ["Đánh giá điều kiện trích lập dự phòng bảo hành sản phẩm", "Tính toán dự phòng hợp đồng rủi ro lớn (Onerous contract)", "Hạch toán chi phí tái cơ cấu DN và sa thải nhân viên"],
+        related: "IAS 16, IAS 10, IAS 19, IFRS 15"
+      },
+      {
+        code: "IAS 40",
+        name: "Bất động sản Đầu tư",
+        enName: "Investment Property",
+        cluster: "Assets",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm rất cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ias-40-investment-property/",
+        focus: [
+          "Định nghĩa: Bất động sản (đất hoặc tòa nhà) nắm giữ nhằm mục đích hưởng tiền cho thuê hoặc chờ tăng giá (Capital appreciation), không dùng cho sản xuất kinh doanh hay để bán.",
+          "Đo lường ban đầu: Theo nguyên giá (bao gồm chi phí giao dịch).",
+          "Lựa chọn chính sách sau ghi nhận: Mô hình Giá gốc (Cost Model - trích khấu hao như IAS 16) vs Mô hình Giá trị hợp lý (Fair Value Model).",
+          "ĐIỂM BẪY ĐỀ THI QUAN TRỌNG: Theo Fair Value Model của IAS 40:",
+          "• Toàn bộ chênh lệch biến động giá trị hợp lý ghi nhận trực tiếp vào LÃI/LỖ TRONG KỲ (P/L), KHÔNG qua OCI.",
+          "• KHÔNG TRÍCH KHẤU HAO đối với bất động sản đầu tư đo lường theo Fair value.",
+          "Chuyển đổi mục đích sử dụng (Transfers): Từ PPE (IAS 16) sang Investment Property (IAS 40 FV model) → Chênh lệch tăng ghi vào OCI/Revaluation surplus; Chuyển từ Hàng tồn kho (IAS 2) sang Investment Property FV → Chênh lệch ghi vào P/L."
+        ],
+        exercises: ["So sánh hạch toán Fair Value Model (IAS 40) vs Revaluation Model (IAS 16)", "Hạch toán chuyển đổi từ PPE sang Bất động sản đầu tư", "Thuyết minh phân loại bất động sản phức hợp hỗn hợp"],
+        related: "IAS 16, IFRS 13, IAS 2, IAS 12"
+      },
+      {
+        code: "IAS 41",
+        name: "Nông nghiệp",
+        enName: "Agriculture",
+        cluster: "Assets",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ias-41-agriculture/",
+        focus: [
+          "Phạm vi: Quản lý sự biến đổi sinh học của Tài sản sinh học (Biological assets: động vật sống, cây trồng) và Nông sản tại điểm thu hoạch (Agricultural produce).",
+          "Đo lường Tài sản sinh học: Theo Giá trị hợp lý trừ Chi phí bán (Fair Value less costs to sell) tại thời điểm ghi nhận ban đầu và tại mỗi ngày lập BCTC; Toàn bộ biến động ghi nhận vào P/L.",
+          "Đo lường Nông sản thu hoạch: Ghi nhận theo Giá trị hợp lý trừ chi phí bán tại thời điểm thu hoạch, sau thời điểm này nông sản trở thành Hàng tồn kho và tuân theo IAS 2.",
+          "PHÂN BIỆT CỐT LÕI: Cây cho trái lâu năm (Bearer plants - ví dụ cây cao su, vườn nho, vườn cọ lấy dầu) KHÔNG thuộc phạm vi IAS 41 mà được kế toán như PPE theo IAS 16 (tính khấu hao)."
+        ],
+        exercises: ["Định giá đàn gia súc theo Fair value less costs to sell", "Phân biệt Bearer plants (IAS 16) vs Biological assets (IAS 41)", "Hạch toán nông sản tại thời điểm thu hoạch sang IAS 2"],
+        related: "IAS 16, IAS 2, IFRS 13"
+      },
+      {
+        code: "IFRS 1",
+        name: "Lần đầu Áp dụng Chuẩn mực BCTC Quốc tế",
+        enName: "First-time Adoption of International Financial Reporting Standards",
+        cluster: "Foundation",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-1-first-time-adoption-of-international-financial-reporting-standards/",
+        focus: [
+          "Xác định Ngày chuyển đổi sang IFRS (Date of transition): Ngày bắt đầu của kỳ so sánh sớm nhất được trình bày trên BCTC IFRS đầu tiên.",
+          "Lập Báo cáo tình hình tài chính mở đầu theo IFRS (Opening IFRS statement of financial position): Ghi nhận toàn bộ tài sản/nợ theo IFRS, xóa sổ các khoản mục GAAP cũ không thỏa mãn điều kiện IFRS, tái phân loại theo IFRS.",
+          "Các điều chỉnh phát sinh tại ngày chuyển đổi được ghi nhận trực tiếp vào Lợi nhuận giữ lại (Retained earnings) hoặc cấu phần vốn CSH phù hợp.",
+          "Các miễn trừ bắt buộc (Mandatory exceptions: ước tính kế toán, derecognition tài sản tài chính, hedge accounting).",
+          "Các miễn trừ tùy chọn (Optional exemptions: sử dụng Fair value làm Deemed cost cho PPE/BĐS đầu tư, không hồi tố các giao dịch M&A trước ngày chuyển đổi, xóa số dư FCTR lũy kế về 0)."
+        ],
+        exercises: ["Xác định Ngày chuyển đổi sang IFRS cho DN", "Lập bút toán mở sổ tại ngày chuyển đổi sang IFRS", "Áp dụng Deemed cost cho PPE theo IAS 16"],
+        related: "Toàn bộ chuẩn mực IAS / IFRS"
+      },
+      {
+        code: "IFRS 2",
+        name: "Thanh toán trên Cơ sở Cổ phiếu",
+        enName: "Share-based Payment",
+        cluster: "Revenue & Leases",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm rất cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-2-share-based-payment/",
+        focus: [
+          "Phân loại 2 hình thức chính: Giao dịch thanh toán bằng công cụ vốn (Equity-settled) vs Giao dịch thanh toán bằng tiền mặt (Cash-settled / Quyền tăng giá cổ phiếu SARs).",
+          "Giao dịch bằng công cụ vốn (Equity-settled):",
+          "• Đo lường theo Giá trị hợp lý tại NGÀY TRAO QUYỀN (Grant date fair value), KHÔNG ĐIỀU CHỈNH LẠI theo biến động thị trường sau này.",
+          "• Ghi nhận Chi phí trong kỳ đối ứng với Vốn chủ sở hữu (Equity reserve) qua thời gian phục vụ (Vesting period).",
+          "Giao dịch bằng tiền mặt (Cash-settled):",
+          "• Đo lường lại theo Giá trị hợp lý tại MỖI NGÀY LẬP BCTC và ngày thanh toán.",
+          "• Ghi nhận Chi phí đối ứng NỢ PHẢI TRẢ TÀI CHÍNH (Liability).",
+          "Điều kiện vesting: Điều kiện dịch vụ (Service conditions), Điều kiện kết quả phi thị trường (Non-market performance conditions - điều chỉnh số lượng cổ phiếu ước tính hưởng) vs Điều kiện thị trường (Market conditions - phản ánh vào fair value ban đầu)."
+        ],
+        exercises: ["Tính chi phí ESOP qua thời gian vesting có nhân viên nghỉ việc", "Đo lường nợ quyền tăng giá cổ phiếu (SARs) theo fair value từng kỳ", "Xử lý điều chỉnh thời gian vesting và market conditions"],
+        related: "IFRS 13, IAS 19, IAS 32, IAS 33"
+      },
+      {
+        code: "IFRS 5",
+        name: "Tài sản Dài hạn Giữ để Bán và Hoạt động Bị chấm dứt",
+        enName: "Non-current Assets Held for Sale and Discontinued Operations",
+        cluster: "Assets",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm rất cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-5-non-current-assets-held-for-sale-and-discontinued-operations/",
+        focus: [
+          "Tiêu chuẩn phân loại Giữ để bán (Held for Sale): (1) Có sẵn để bán ngay ở tình trạng hiện tại, (2) Khả năng bán là rất cao (Highly probable: cam kết kế hoạch bán, đang tích cực tìm người mua, giá hợp lý so với thị trường, dự kiến hoàn tất trong vòng 12 tháng).",
+          "Đo lường khi phân loại: Theo mức THẤP HƠN giữa Giá trị ghi sổ (Carrying Amount) và Giá trị hợp lý trừ Chi phí bán (Fair Value less costs to sell).",
+          "Tổn thất suy giảm phát sinh ghi nhận ngay vào P/L (Impairment loss).",
+          "QUY TẮC CỐT LÕI: BẮT BUỘC NGỪNG TRÍCH KHẤU HAO (Cease depreciation) kể từ ngày tài sản được phân loại là Held for sale.",
+          "Trình bày Hoạt động bị chấm dứt (Discontinued Operations): Toàn bộ kết quả kinh doanh sau thuế và lãi/lỗ thanh lý của bộ phận bị chấm dứt phải trình bày gộp thành MỘT DÒNG ĐƠN LẺ trên Báo cáo kết quả hoạt động (P/L)."
+        ],
+        exercises: ["Đo lường tài sản dài hạn khi chuyển sang Held for sale", "Xử lý dừng khấu hao máy móc chuẩn bị thanh lý", "Trình bày dòng lợi nhuận Discontinued operation trên P/L"],
+        related: "IAS 16, IAS 36, IAS 38, IFRS 13"
+      },
+      {
+        code: "IFRS 8",
+        name: "Bộ phận Kinh doanh",
+        enName: "Operating Segments",
+        cluster: "Financial Instruments",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-8-operating-segments/",
+        focus: [
+          "Phương pháp quản lý (Management approach): Bộ phận kinh doanh được xác định dựa trên các báo cáo nội bộ được xem xét thường xuyên bởi Người ra quyết định điều hành cao nhất (Chief Operating Decision Maker - CODM) để phân bổ nguồn lực và đánh giá kết quả.",
+          "Tiêu chuẩn định lượng để xác định Bộ phận phải báo cáo (Reportable segments - Thử nghiệm 10%):",
+          "• Doanh thu (nội bộ + bên ngoài) đạt ≥ 10% tổng doanh thu của tất cả các bộ phận.",
+          "• Giá trị tuyệt đối của Lợi nhuận/Lỗ đạt ≥ 10% mức cao hơn giữa tổng lợi nhuận của các bộ phận có lãi và tổng lỗ của các bộ phận bị lỗ.",
+          "• Tài sản đạt ≥ 10% tổng tài sản của tất cả các bộ phận.",
+          "Tiêu chuẩn bao phủ 75%: Tổng doanh thu từ khách hàng bên ngoài của các bộ phận báo cáo phải đạt ít nhất 75% tổng doanh thu hợp nhất toàn đơn vị (nếu chưa đủ phải bổ sung thêm bộ phận).",
+          "Thuyết minh thông tin về khách hàng lớn (Khách hàng đơn lẻ đem lại ≥ 10% doanh thu)."
+        ],
+        exercises: ["Kiểm tra các tiêu chuẩn định lượng 10% xác định bộ phận báo cáo", "Kiểm tra tiêu chuẩn 75% doanh thu bên ngoài", "Thuyết minh giao dịch giữa các bộ phận"],
+        related: "IAS 1, IAS 34, IAS 36"
+      },
+      {
+        code: "IFRS 11",
+        name: "Thỏa thuận Chung",
+        enName: "Joint Arrangements",
+        cluster: "Tax & Consolidation",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm cao",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-11-joint-arrangements/",
+        focus: [
+          "Định nghĩa: Thỏa thuận mà trong đó hai hoặc nhiều bên có Đồng kiểm soát (Joint control - quyền quyết định các hoạt động liên quan đòi hỏi sự đồng thuận tuyệt đối của các bên kiểm soát).",
+          "Phân loại 2 loại thỏa thuận chung dựa trên quyền và nghĩa vụ theo hợp đồng:",
+          "1. Hoạt động chung (Joint Operation): Các bên có quyền đối với tài sản và nghĩa vụ đối với các khoản nợ liên quan → Hạch toán: Mỗi bên ghi nhận phần tỷ lệ Tài sản, Nợ phải trả, Doanh thu và Chi phí của riêng mình trực tiếp vào BCTC.",
+          "2. Liên doanh (Joint Venture): Các bên có quyền đối với Tài sản thuần của thỏa thuận (thường thông qua một pháp nhân riêng biệt) → Hạch toán: Áp dụng Phương pháp Vốn chủ sở hữu (Equity Method) theo IAS 28.",
+          "CẤM áp dụng phương pháp hợp nhất theo tỷ lệ (Proportionate consolidation) cho Joint Venture."
+        ],
+        exercises: ["Phân biệt cấu trúc Joint Operation vs Joint Venture", "Hạch toán tỷ lệ tài sản và doanh thu của bên tham gia Joint Operation", "Chuyển giao tài sản vào thỏa thuận chung"],
+        related: "IAS 28, IFRS 10, IFRS 12, IFRS 3"
+      },
+      {
+        code: "IFRS 12",
+        name: "Thuyết minh Lợi ích trong các Đơn vị khác",
+        enName: "Disclosure of Interests in Other Entities",
+        cluster: "Tax & Consolidation",
+        status: "Cần ôn luyện",
+        weight: "Trọng tâm trung bình",
+        ifrsUrl: "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-12-disclosure-of-interests-in-other-entities/",
+        focus: [
+          "Mục tiêu: Cung cấp thông tin để người đọc đánh giá bản chất và rủi ro từ các khoản đầu tư vào Đơn vị khác (Cty con, Cty liên kết, Liên doanh, và Đơn vị cấu trúc không hợp nhất).",
+          "Thuyết minh các đánh giá và xét đoán quan trọng: Đánh giá quyền kiểm soát (Control khi tỷ lệ biểu quyết <50%), Đánh giá ảnh hưởng đáng kể, Đánh giá đơn vị đầu tư (Investment entity).",
+          "Thuyết minh về Cổ đông không kiểm soát (NCI trọng yếu): Tỷ lệ sở hữu, tóm tắt thông tin tài chính của công ty con có NCI trọng yếu, cổ tức đã trả cho NCI.",
+          "Thuyết minh về Đơn vị cấu trúc không hợp nhất (Unconsolidated structured entities): Mức độ phơi nhiễm rủi ro tối đa và các khoản tài trợ đã cung cấp."
+        ],
+        exercises: ["Thuyết minh thông tin tài chính của cty con có NCI trọng yếu", "Thuyết minh rủi ro từ công ty liên kết theo IAS 28", "Nhận diện đơn vị cấu trúc"],
+        related: "IFRS 10, IAS 28, IFRS 11, IFRS 3"
+      }
+    ];
+
+    const EXERCISES_DATA = [
+      { id: "EX-01", name: "Nhận diện tài sản, nợ phải trả và điều kiện ghi nhận", standard: "Conceptual Framework", skill: "Lý thuyết & Phân tích" },
+      { id: "EX-02", name: "Government grant: asset-related / income-related", standard: "IAS 20", skill: "Tính toán & Hạch toán" },
+      { id: "EX-03", name: "Research vs development; vốn hóa intangible asset", standard: "IAS 38", skill: "Case study & Tính toán" },
+      { id: "EX-04", name: "PPE cost, depreciation, revaluation, disposal", standard: "IAS 16", skill: "Tính toán & Journal entries" },
+      { id: "EX-05", name: "Recoverable amount, CGU, impairment allocation", standard: "IAS 36", skill: "Tính toán & Phân bổ" },
+      { id: "EX-06", name: "Tax base, temporary differences, DTA/DTL", standard: "IAS 12", skill: "Tính toán & Phân tích" },
+      { id: "EX-07", name: "Acquisition method, goodwill, NCI, deferred tax", standard: "IFRS 3", skill: "Bài tập tích hợp M&A" },
+      { id: "EX-08", name: "Borrowing costs capitalization", standard: "IAS 23", skill: "Tính toán & Nguyên tắc" },
+      { id: "EX-09", name: "Control assessment và consolidation W1-W6", standard: "IFRS 10", skill: "Hợp nhất BCTC kinh điển" },
+      { id: "EX-10", name: "Equity method và associate investment", standard: "IAS 28", skill: "Tính toán & Báo cáo" },
+      { id: "EX-11", name: "Five-step revenue model và allocation", standard: "IFRS 15", skill: "Phân bổ giá bán độc lập" },
+      { id: "EX-12", name: "Variable consideration và constraint", standard: "IFRS 15", skill: "Ước tính xác suất & Ràng buộc" },
+      { id: "EX-13", name: "Contract modification và repurchase agreements", standard: "IFRS 15", skill: "Case study tình huống" },
+      { id: "EX-14", name: "Lease liability, ROU asset, subsequent measurement", standard: "IFRS 16", skill: "Bảng phân bổ khấu hao & nợ" },
+      { id: "EX-15", name: "Business model + SPPI classification", standard: "IFRS 9", skill: "Lý thuyết & Phân loại" },
+      { id: "EX-16", name: "Amortised cost và EIR schedule", standard: "IFRS 9", skill: "Lập bảng phân bổ lãi suất thực" },
+      { id: "EX-17", name: "Debt FVOCI: EIR + FV movement + ECL", standard: "IFRS 9", skill: "Tích hợp P/L và OCI" },
+      { id: "EX-18", name: "FVTPL subsequent fair value measurement", standard: "IFRS 9", skill: "Đo lường định kỳ & P/L" },
+      { id: "EX-19", name: "ECL 3-stage model và provision matrix", standard: "IFRS 9", skill: "Tính toán dự phòng tổn thất" },
+      { id: "EX-20", name: "Financial liabilities, own credit risk", standard: "IFRS 9", skill: "Phân tích rủi ro tín dụng riêng" },
+      { id: "EX-21", name: "Derecognition / transfer of receivables", standard: "IFRS 9", skill: "Đánh giá chuyển giao rủi ro & quyền" },
+      { id: "EX-22", name: "Liability vs equity; fixed-for-fixed", standard: "IAS 32", skill: "Nhận định bản chất công cụ" },
+      { id: "EX-23", name: "Compound financial instrument allocation", standard: "IAS 32", skill: "Tách nợ & vốn trái phiếu chuyển đổi" },
+      { id: "EX-24", name: "Credit risk disclosures và ECL disclosures", standard: "IFRS 7", skill: "Thuyết minh BCTC" },
+      { id: "EX-25", name: "Fair value hierarchy và valuation approaches", standard: "IFRS 13", skill: "Phân cấp Level 1/2/3" }
+    ];
+
+    const CASES_DATA = [
+      {
+        topic: "EIR — Trái phiếu Amortised Cost",
+        numbers: "Interest income $66,500; Coupon cash $50,000; Amortised cost cuối kỳ $966,500.",
+        focus: "Phân biệt doanh thu lãi tính theo EIR (ghi nhận P/L) với dòng tiền coupon thực nhận. Chênh lệch làm tăng carrying amount.",
+        tag: "IFRS 9"
+      },
+      {
+        topic: "FVTPL — Trái phiếu kinh doanh",
+        numbers: "Fair Value cuối Year 1 $9.4m; cuối Year 2 $9.8m.",
+        focus: "Đo lường lại theo Fair Value mỗi ngày lập BCTC. Toàn bộ chênh lệch lãi/lỗ đánh giá lại ghi nhận trực tiếp vào P/L.",
+        tag: "IFRS 9"
+      },
+      {
+        topic: "Receivable Transfer (Bán nợ)",
+        numbers: "Carrying amount $5m; Cash thu về $4.85m; Chênh lệch $150k.",
+        focus: "Derecognition test: Xem xét chuyển giao quyền nhận dòng tiền và rủi ro tín dụng (with recourse vs non-recourse).",
+        tag: "IFRS 9 (50%)"
+      },
+      {
+        topic: "Case Gamma Co — Chuyển nhượng nợ",
+        numbers: "Khoản phải thu $8m; Số tiền nhận $7.8m.",
+        focus: "Kiểm tra quyền thu tiền, rủi ro tín dụng và tiêu chuẩn derecognition. Nếu giữ lại rủi ro trọng yếu, ghi nhận như khoản vay.",
+        tag: "IFRS 9 (50%)"
+      },
+      {
+        topic: "Trade Receivables — Ma trận tổn thất",
+        numbers: "Tổng nợ phải thu $10m; Dự phòng ECL trích lập $600k.",
+        focus: "Simplified approach sử dụng Provision Matrix cho nợ thương mại không có financing component.",
+        tag: "IFRS 9"
+      },
+      {
+        topic: "ECL Portfolio — 3-Stage Model",
+        numbers: "A $8m Stage 1 (2%); B $5m Stage 2 (10%); C $3m Stage 3 (40%); D $4m Defaulted (60%).",
+        focus: "Stage 1 tính 12-month ECL; Stage 2 & 3 tính Lifetime ECL. Stage 3 tính lãi trên Net Carrying Amount (CA - ECL).",
+        tag: "IFRS 9"
+      },
+      {
+        topic: "IFRS 15 — Case ABC (Hợp đồng gói)",
+        numbers: "Hợp đồng máy $650k gồm: Cung cấp máy, Lắp đặt và Bảo trì 2 năm.",
+        focus: "Nhận diện distinct performance obligations và phân bổ giá giao dịch $650k theo tỷ lệ Stand-alone selling price.",
+        tag: "IFRS 15"
+      },
+      {
+        topic: "IFRS 15 — Case XYZ (Tài trợ trả chậm)",
+        numbers: "Thanh toán $1.2m sau 18 tháng; Giá bán tiền mặt ngay $1.12m.",
+        focus: "Significant financing component: Doanh thu ghi nhận tại ngày giao hàng $1.12m, chênh lệch $80k ghi nhận chi phí/doanh thu lãi theo thời gian.",
+        tag: "IFRS 15"
+      },
+      {
+        topic: "IFRS 15 — Khoản thưởng theo kết quả",
+        numbers: "Xác suất hoàn thành đúng hạn 70%; Khoản thưởng $556k.",
+        focus: "Variable consideration (Most likely amount) kết hợp quy tắc Constraint: Chỉ ghi nhận nếu highly probable không bị đảo ngược.",
+        tag: "IFRS 15"
+      },
+      {
+        topic: "IAS 32 — Trái phiếu chuyển đổi",
+        numbers: "Face value $12m; Coupon 4%; Kỳ hạn 4 năm; Đổi 600,000 cp; Straight debt FV $10.5m; Transaction costs $240k.",
+        focus: "Split accounting: Liability component = $10.5m; Equity = $1.5m. Chi phí $240k phân bổ theo tỷ lệ 10.5 : 1.5.",
+        tag: "IAS 32"
+      },
+      {
+        topic: "IAS 32 — Chi tiết định giá Component",
+        numbers: "Case ví dụ: Liability $9.2m & Equity $0.8m; Phiên bản DCF: Liability $8,940,634 & Equity $1,059,366.",
+        focus: "Định giá phần Nợ bằng giá trị chiết khấu dòng tiền tương lai (DCF) theo lãi suất thị trường của trái phiếu tương tự không chuyển đổi.",
+        tag: "IAS 32"
+      }
+    ];
+
+    const IFRS9_EVAL = [
+      { topic: "IFRS 9 — Classification", score: "80%", status: "Khá", color: "emerald", note: "Nắm vững Business model test & SPPI test" },
+      { topic: "IFRS 9 — Measurement", score: "75–80%", status: "Khá", color: "emerald", note: "Amortised cost, FVOCI, FVTPL" },
+      { topic: "IFRS 9 — EIR", score: "80%", status: "Khá", color: "emerald", note: "Lập bảng phân bổ lãi suất thực và coupon" },
+      { topic: "IFRS 9 — ECL", score: "70%", status: "Trung bình khá", color: "amber", note: "Cần chú ý Stage 2 không đồng nghĩa với default" },
+      { topic: "IFRS 9 — Financial liabilities", score: "70–75%", status: "Khá", color: "amber", note: "Xử lý own credit risk vào OCI" },
+      { topic: "IFRS 9 — Derecognition", score: "50%", status: "Cảnh báo đỏ", color: "rose", note: "CẦN LUYỆN THÊM: risks & rewards, control, recourse" }
+    ];
+
+    const MATRIX_DATA = [
+      { cluster: "Nền tảng ghi nhận", standards: "Conceptual Framework → Các IFRS/IAS", rel: "Framework hỗ trợ định nghĩa, recognition criteria, measurement bases, presentation khi chuẩn mực cụ thể chưa có hướng dẫn hoặc cần lý giải bản chất." },
+      { cluster: "Tài sản dài hạn", standards: "IAS 16 + IAS 38 + IAS 36", rel: "Ghi nhận ban đầu (nguyên giá/capitalisation) → Khấu hao/Amortisation theo kỳ → Test Impairment (IAS 36) → Thanh lý/Derecognition." },
+      { cluster: "Trợ cấp & Tài sản", standards: "IAS 20 + IAS 16 / IAS 38", rel: "Grant tài trợ mua PPE/Vô hình: Deferred income (ghi dần P/L khớp khấu hao) hoặc Netting off (giảm trực tiếp nguyên giá tài sản)." },
+      { cluster: "Thuế hoãn lại", standards: "IAS 12 + IAS 16 + IAS 36 + IFRS 3 + IFRS 16", rel: "Temporary differences phát sinh liên tục: Revaluation surplus (DTL qua OCI), Impairment (DTA qua P/L), M&A FV adjustments (DTL/DTA qua Goodwill), Lease ROU/Liability." },
+      { cluster: "Hợp nhất kinh doanh", standards: "IFRS 3 + IFRS 10 + IAS 12 + IAS 36", rel: "Acquisition method định giá FV tài sản thuần → DTL trên FV adjustments → Tính Goodwill & NCI → Lập BCTC hợp nhất W1-W6 → Test impairment Goodwill hàng năm." },
+      { cluster: "Đầu tư đơn vị khác", standards: "IFRS 10 + IAS 28", rel: "Quyền kiểm soát (Control >50%) → Hợp nhất BCTC; Ảnh hưởng đáng kể (Significant influence 20-50%) → Phương pháp Vốn chủ sở hữu (Equity Method)." },
+      { cluster: "Doanh thu & Công nợ", standards: "IFRS 15 + IFRS 9", rel: "Ghi nhận Doanh thu tạo ra Khoản phải thu (Receivable) hoặc Tài sản hợp đồng (Contract Asset) → Đo lường ECL theo IFRS 9." },
+      { cluster: "Thuê tài sản & Thuế", standards: "IFRS 16 + IAS 12", rel: "ROU asset và Lease liability có chênh lệch thời gian ghi nhận chi phí kế toán (Khấu hao + Lãi vay) so với chi phí tiền thuê được trừ thuế → DTA/DTL." },
+      { cluster: "Công cụ tài chính", standards: "IFRS 9 + IAS 32 + IFRS 7 + IFRS 13", rel: "IAS 32 phân loại Nợ vs Vốn → IFRS 9 phân loại & đo lường (EIR, ECL, FV) → IFRS 13 cung cấp kỹ thuật Fair Value → IFRS 7 thuyết minh rủi ro toàn diện." },
+      { cluster: "Phạm vi Impairment", standards: "IAS 36 + IFRS 9", rel: "IAS 36 áp dụng cho tài sản phi tài chính (PPE, Vô hình, Goodwill); IFRS 9 độc quyền điều chỉnh impairment (ECL) cho tài sản tài chính (nợ phải thu, trái phiếu)." },
+      { cluster: "Đo lường Fair value", standards: "IFRS 3 + IFRS 9 + IFRS 13", rel: "IFRS 13 là chuẩn mực khung (framework) cung cấp định nghĩa exit price và 3 cấp độ Level 1/2/3 để IFRS 3 và IFRS 9 áp dụng." }
+    ];
+
+    const QUIZ_QUESTIONS = [
+      {
+        id: 1,
+        standard: "IFRS 9 Financial Instruments",
+        ref: "IFRS 9.3.2.6 & 3.2.15 (Derecognition of Financial Assets)",
+        question: "Alpha Co factored a portfolio of trade receivables with a carrying amount of $5,000,000 to a financial institution for cash proceeds of $4,850,000. Under the factoring agreement, Alpha Co retains a full recourse obligation, meaning that if customers fail to settle their accounts within 90 days, Alpha Co must compensate the institution for all defaulted balances plus interest. How should Alpha Co account for this transaction under IFRS 9?",
+        options: [
+          "Derecognize the trade receivables of $5,000,000 and recognize a loss on disposal of $150,000 in profit or loss.",
+          "Continue to recognize the trade receivables of $5,000,000 and recognize a financial liability (collateralized/secured borrowing) of $4,850,000.",
+          "Derecognize 50% of the trade receivables based on the expected default rate and recognize a guarantee obligation.",
+          "Derecognize the trade receivables and disclose a contingent liability in the notes to the financial statements."
+        ],
+        correct: 1,
+        explanationEn: "Under IFRS 9, an entity derecognizes a financial asset only if it transfers substantially all the risks and rewards of ownership. Because Alpha Co retains full credit risk through the recourse obligation, substantially all risks and rewards remain with Alpha Co. Therefore, the receivables must NOT be derecognized, and the cash proceeds received ($4,850,000) must be recognized as a financial liability (secured borrowing).",
+        explanationVi: "Do Alpha Co chịu trách nhiệm bảo lãnh hoàn toàn (with full recourse - cam kết bồi hoàn nợ xấu), doanh nghiệp vẫn giữ lại phần lớn rủi ro tín dụng và lợi ích kinh tế. Theo IFRS 9, doanh nghiệp KHÔNG ĐƯỢC dừng ghi nhận (derecognize) khoản nợ phải thu, mà phải ghi nhận số tiền $4,850,000 nhận được như một khoản nợ đi vay có bảo đảm (Secured Borrowing). Bút toán: Nợ Tiền $4.85m / Có Nợ tài chính $4.85m."
+      },
+      {
+        id: 2,
+        standard: "IFRS 9 Financial Instruments",
+        ref: "IFRS 9.5.5.3 & 5.4.1 (ECL 3-Stage Model & Effective Interest)",
+        question: "Omega Bank holds a commercial loan portfolio measured at amortised cost with an initial gross carrying amount of $10,000,000. At the reporting date, there has been a significant increase in credit risk (SICR) since initial recognition, but the loans are not credit-impaired (the portfolio moves from Stage 1 to Stage 2). How should Omega Bank recognize the impairment loss allowance and interest revenue under IFRS 9?",
+        options: [
+          "Recognize a 12-month expected credit loss (12-month ECL), and calculate interest revenue on the net carrying amount.",
+          "Recognize lifetime expected credit losses (Lifetime ECL), and calculate interest revenue on the gross carrying amount using the effective interest rate (EIR).",
+          "Recognize lifetime expected credit losses (Lifetime ECL), and calculate interest revenue on the net carrying amount (gross carrying amount less loss allowance).",
+          "Recognize impairment only upon an incurred default event, calculating interest revenue on the gross carrying amount."
+        ],
+        correct: 1,
+        explanationEn: "When a financial asset experiences a significant increase in credit risk (Stage 2), the loss allowance is measured at an amount equal to Lifetime Expected Credit Losses (Lifetime ECL). However, because the asset is NOT credit-impaired, interest revenue continues to be calculated on the GROSS Carrying Amount using the effective interest rate (EIR). Only in Stage 3 (credit-impaired) does interest calculation switch to the Net Carrying Amount.",
+        explanationVi: "Khi chuyển sang Stage 2 (rủi ro tín dụng gia tăng đáng kể nhưng chưa vỡ nợ thực tế), mức dự phòng phải nâng lên tổn thất trọn đời (Lifetime ECL). Tuy nhiên, bẫy thường gặp trong đề thi là doanh thu tiền lãi (Interest revenue) vẫn được tính trên GIÁ TRỊ GHI SỔ GỘP (Gross Carrying Amount) bằng lãi suất thực (EIR). Chỉ khi tài sản chuyển sang Stage 3 (Credit-impaired) thì lãi suất mới tính trên giá trị thuần (Net CA = Gross CA - ECL)."
+      },
+      {
+        id: 3,
+        standard: "IFRS 15 Revenue from Contracts with Customers",
+        ref: "IFRS 15.56–58 (Variable Consideration Constraint)",
+        question: "Delta Construction enters into a contract to construct an asset for a customer for a fixed fee of $2,000,000 plus an additional performance bonus of $500,000 if completion occurs within 12 months. Delta estimates a 70% probability of timely completion, but uncontrollable regulatory inspections and severe winter weather could delay the project. How should Delta determine the transaction price at contract inception under IFRS 15?",
+        options: [
+          "$2,350,000 (calculated as $2,000,000 + 70% × $500,000 using the expected value method).",
+          "$2,500,000 without restriction, because a 70% probability exceeds the more-likely-than-not threshold.",
+          "$2,000,000, excluding the bonus due to the variable consideration constraint, because it is not highly probable that a significant revenue reversal will not occur.",
+          "$2,000,000 plus the fair value of construction progress at inception."
+        ],
+        correct: 2,
+        explanationEn: "Under IFRS 15, variable consideration is included in the transaction price only to the extent that it is 'highly probable' that a significant reversal in the amount of cumulative revenue recognized will not occur when the uncertainty is resolved. Due to uncontrollable weather conditions and regulatory inspections, Delta cannot conclude that a reversal is highly improbable. Therefore, the constraint applies, and the $500,000 bonus is excluded from the transaction price at inception.",
+        explanationVi: "Bẫy xác suất trong IFRS 15: Dù xác suất đạt là 70% (>50%), chuẩn mực quy định quy tắc ràng buộc (Variable Consideration Constraint) với ngưỡng rất cao là 'rất có khả năng' (highly probable) không xảy ra sự đảo ngược doanh thu trọng yếu. Do có rủi ro thời tiết và thanh tra pháp lý ngoài tầm kiểm soát, doanh nghiệp không được ghi nhận khoản thưởng $500k tại thời điểm khởi đầu hợp đồng, giá giao dịch chỉ là $2,000,000."
+      },
+      {
+        id: 4,
+        standard: "IAS 32 Financial Instruments: Presentation",
+        ref: "IAS 32.31 & AG38 (Compound Instruments & Direct Issue Costs)",
+        question: "Gamma Co issues 10,000 convertible bonds on 1 January 20X1 at par value of $1,000 each (total proceeds $10,000,000) carrying a 3% coupon payable annually. The bonds can be converted into ordinary shares at maturity in 3 years. The market interest rate for similar non-convertible debt is 7%. Direct issuance transaction costs of $300,000 were incurred. How should the $300,000 transaction costs be accounted for under IAS 32?",
+        options: [
+          "Expensed immediately in full in profit or loss (finance costs) in 20X1.",
+          "Deducted entirely from the equity component in equity reserves.",
+          "Allocated proportionally between the liability and equity components based on their initial relative carrying amounts.",
+          "Capitalized entirely into the liability component and amortized on a straight-line basis over 3 years."
+        ],
+        correct: 2,
+        explanationEn: "Under IAS 32.31 and paragraph AG38, transaction costs relating to the issuance of a compound financial instrument must be allocated between the liability and equity components in proportion to the initial allocation of proceeds. The portion allocated to the liability reduces its initial carrying amount (adjusting the EIR), while the portion allocated to equity is deducted directly from equity (retained earnings or equity reserve).",
+        explanationVi: "Theo IAS 32, chi phí phát hành (transaction costs) của một công cụ tài chính phức hợp (Compound Financial Instrument) bắt buộc phải phân bổ theo tỷ lệ giá trị ghi nhận ban đầu giữa cấu phần Nợ (Liability component) và cấu phần Vốn (Equity component). Phần phân bổ vào Nợ làm giảm giá trị nợ ban đầu (và điều chỉnh tăng EIR); phần phân bổ vào Vốn được giảm trừ trực tiếp vào thặng dư vốn/vốn chủ sở hữu."
+      },
+      {
+        id: 5,
+        standard: "IAS 16 & IAS 12",
+        ref: "IAS 16.39 & IAS 12.61A (Backward Tracing for OCI Items)",
+        question: "On 31 December 20X1, Sigma Co revalued an office building from its carrying amount of $4,000,000 to its fair value of $6,000,000 under IAS 16. The tax base of the building is $3,500,000, and the corporate tax rate is 25%. Prior to revaluation, deferred tax had already been properly accounted for. What is the accounting impact of the revaluation and deferred tax under IAS 16 and IAS 12?",
+        options: [
+          "Recognize a revaluation gain of $2,000,000 in profit or loss and deferred tax expense of $500,000 in profit or loss.",
+          "Recognize a revaluation surplus of $2,000,000 in OCI and deferred tax expense of $500,000 in OCI, with an increase in Deferred Tax Liability (DTL) of $500,000.",
+          "Recognize a net revaluation surplus of $1,500,000 directly in retained earnings, with no deferred tax provided until disposal.",
+          "Recognize a revaluation surplus of $2,000,000 in OCI and deferred tax expense of $625,000 in profit or loss."
+        ],
+        correct: 1,
+        explanationEn: "The $2,000,000 revaluation gain is recognized in Other Comprehensive Income (OCI) and accumulated in the revaluation surplus. Under IAS 12, this increases the taxable temporary difference by $2,000,000, generating an additional Deferred Tax Liability (DTL) of $500,000 ($2,000,000 × 25%). Under the 'backward tracing' principle of IAS 12.61A, because the underlying item is recognized in OCI, the related deferred tax expense MUST also be recognized in OCI, not in profit or loss.",
+        explanationVi: "Khoản thặng dư đánh giá lại $2,000,000 được ghi nhận vào OCI. Chênh lệch tạm thời chịu thuế tăng $2,000,000 → Nợ thuế hoãn lại (DTL) tăng $500,000 ($2m × 25%). Bẫy cốt lõi trong đề thi DipIFR là nguyên tắc 'backward tracing' của IAS 12: Khoản gốc được ghi nhận vào OCI thì chi phí thuế hoãn lại tương ứng BẮT BUỘC ghi vào OCI (giảm thặng dư đánh giá lại), không được hạch toán vào P/L!"
+      },
+      {
+        id: 6,
+        standard: "IFRS 16 Leases",
+        ref: "IFRS 16.24 (Initial Measurement of Right-of-Use Asset)",
+        question: "Kappa Co entered into a 5-year lease for warehouse machinery. On the commencement date, Kappa Co incurred or estimated the following: (1) Present value of lease payments: $800,000; (2) Lease payment made before commencement: $50,000; (3) Lease incentive received from lessor: $10,000; (4) Initial direct legal fees to negotiate the lease: $20,000; (5) Estimate of restoration/dismantling obligation at end of lease: $40,000; (6) Allocated internal general administrative overheads: $15,000. What is the initial carrying amount of the Right-of-Use (ROU) Asset under IFRS 16?",
+        options: [
+          "$800,000",
+          "$900,000",
+          "$915,000",
+          "$860,000"
+        ],
+        correct: 1,
+        explanationEn: "Under IFRS 16.24, the initial cost of the ROU asset equals: Initial lease liability ($800,000) + Lease payments made at/before commencement ($50,000) - Lease incentives received ($10,000) + Initial direct costs ($20,000) + Dismantling/restoration obligation ($40,000) = $900,000. General administrative overheads ($15,000) are not directly attributable and must be expensed in profit or loss.",
+        explanationVi: "Nguyên giá ROU Asset = Nợ thuê ban đầu ($800k) + Tiền thuê trả trước ($50k) - Hỗ trợ nhận được ($10k) + Chi phí trực tiếp đàm phán hợp đồng ($20k) + Dự phòng chi phí tháo dỡ hoàn trả mặt bằng ($40k) = $900,000. Chi phí quản lý chung ($15k) không gắn liền trực tiếp nên không được vốn hóa mà phải tính vào chi phí trong kỳ (P/L)."
+      },
+      {
+        id: 7,
+        standard: "IAS 36 Impairment of Assets",
+        ref: "IAS 36.104–105 (Order of Impairment Allocation & Floor Limit)",
+        question: "Theta Co tests a Cash-Generating Unit (CGU) with the following carrying amounts: Goodwill: $200,000; Building: $1,000,000; Equipment: $600,000; Net Working Capital: $200,000 (Total CGU carrying amount: $2,000,000). The recoverable amount of the CGU is determined to be $1,500,000, resulting in a $500,000 impairment loss. The fair value less costs of disposal of the Building is confirmed to be $950,000. How is the $500,000 impairment loss allocated across the CGU assets under IAS 36?",
+        options: [
+          "Goodwill: $200,000; Building: $187,500; Equipment: $112,500.",
+          "Goodwill: $200,000; Building: $50,000; Equipment: $250,000.",
+          "Goodwill: $500,000, with no adjustment to Building or Equipment.",
+          "Allocated strictly pro-rata across all assets including working capital."
+        ],
+        correct: 1,
+        explanationEn: "Total impairment is $500,000 ($2,000,000 - $1,500,000). Step 1: Fully write off Goodwill ($200,000), leaving $300,000 unallocated loss. Step 2: Allocate the remaining $300,000 pro-rata between Building ($1,000,000) and Equipment ($600,000). Pro-rata allocation would assign $187,500 to Building ($300k × 10/16). However, IAS 36.105 explicitly prohibits reducing any asset below its individual recoverable amount ($950,000). Thus, Building impairment is capped at $50,000 ($1,000,000 - $950,000), and the unabsorbed $137,500 excess is reallocated to Equipment, giving Equipment a total impairment of $250,000.",
+        explanationVi: "Bẫy giới hạn sàn (Floor limit) của IAS 36: Tổng tổn thất là $500,000. Bước 1: Xóa sổ toàn bộ Goodwill $200,000, còn lại $300,000 tổn thất. Bước 2: Phân bổ $300,000 cho Tòa nhà ($1m) và Thiết bị ($600k). Theo tỷ lệ thì Tòa nhà chịu $187,500, nhưng IAS 36 quy định không được giảm giá trị bất kỳ tài sản nào xuống dưới Recoverable amount của riêng nó ($950,000). Do đó, tổn thất Tòa nhà bị chặn tối đa ở mức $50,000 ($1,000,000 - $950,000); số tổn thất chưa phân bổ hết ($137,500) dồn toàn bộ sang Thiết bị (Equipment) → Thiết bị chịu $250,000."
+      },
+      {
+        id: 8,
+        standard: "IFRS 13 Fair Value Measurement",
+        ref: "IFRS 13.72–86 (Fair Value Hierarchy & Significant Unobservable Inputs)",
+        question: "Zeta Investment holds a 15% unquoted equity investment in an early-stage biotechnology enterprise. Zeta measures the investment at fair value using a discounted cash flow (DCF) model. The valuation model incorporates internal management forecasts of sales growth and clinical trial milestone success probabilities, alongside an observable industry peer asset beta. Under IFRS 13 Fair Value Measurement, what is the level of this fair value measurement in the hierarchy?",
+        options: [
+          "Level 1, because the discounted cash flow technique is universally standardized.",
+          "Level 2, because an observable industry peer beta is incorporated in the discount rate.",
+          "Level 3, because significant valuation inputs (management internal revenue projections and drug clinical trial probabilities) are unobservable market data.",
+          "Exempt from fair value hierarchy disclosures because the investee is an unlisted private company."
+        ],
+        correct: 2,
+        explanationEn: "Under IFRS 13.73, the fair value hierarchy categorizes valuation measurements in their entirety based on the lowest level input that is significant to the entire measurement. Because entity-specific cash flow forecasts and internal clinical trial probabilities are significant unobservable inputs (Level 3), the entire valuation is classified as Level 3, even if some observable inputs (such as industry beta) were used.",
+        explanationVi: "Nguyên tắc phân cấp của IFRS 13: Toàn bộ phép đo lường giá trị hợp lý sẽ bị xếp vào cấp bậc thấp nhất (Level thấp nhất) của các dữ liệu đầu vào có tính trọng yếu đối với phép định giá. Dù có dùng hệ số beta ngành (Level 2), nhưng việc sử dụng các dự báo dòng tiền nội bộ và xác suất thử nghiệm thuốc của ban giám đốc (Level 3 - Unobservable inputs) làm toàn bộ khoản đầu tư bắt buộc phải xếp vào Level 3."
+      }
+    ];
+
+    /* ==========================================================================
+       2. LOCAL STORAGE MANAGEMENT (Learning Progress & State)
+       ========================================================================== */
+
+    const STORAGE_KEY = "ifrs_hub_state_v2";
+
+    function getSavedState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) return JSON.parse(saved);
+      } catch (e) {
+        console.warn("Storage error", e);
+      }
+      // Defaults
+      return {
+        standardsStatus: {},
+        exercisesStatus: {}, // id: 'done' | 'retry' | 'todo'
+        checklist: {},
+        quizAnswers: {},
+        notes: ""
+      };
+    }
+
+    function saveState(state) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        console.warn("Save error", e);
+      }
+    }
+
+    let appState = getSavedState();
+
+    /* ==========================================================================
+       3. RENDER STANDARDS LIBRARY
+       ========================================================================== */
+
+    let currentClusterFilter = 'all';
+
+    function renderStandards() {
+      const container = document.getElementById('standards-grid');
+      const searchTerm = (document.getElementById('standard-search')?.value || '').toLowerCase().trim();
+
+      const filtered = STANDARDS_DATA.filter(std => {
+        const matchCluster = currentClusterFilter === 'all' || std.cluster === currentClusterFilter;
+        const matchSearch = !searchTerm || 
+          std.code.toLowerCase().includes(searchTerm) ||
+          std.name.toLowerCase().includes(searchTerm) ||
+          std.enName.toLowerCase().includes(searchTerm) ||
+          std.focus.some(f => f.toLowerCase().includes(searchTerm));
+        return matchCluster && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-12 text-center text-slate-400">
+            <svg class="w-12 h-12 mx-auto mb-2 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p class="font-medium text-sm">Không tìm thấy chuẩn mực nào phù hợp với bộ lọc.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(std => {
+        const customStatus = appState.standardsStatus[std.code] || std.status;
+        const statusColors = {
+          'Đã học': 'bg-emerald-50 text-emerald-700 border-emerald-200',
+          'Đang ôn tập': 'bg-amber-50 text-amber-700 border-amber-200',
+          'Cần luyện thêm': 'bg-rose-50 text-rose-700 border-rose-200 font-bold'
+        };
+        const clusterBadgeColors = {
+          'Foundation': 'bg-sky-50 text-sky-700 border-sky-200',
+          'Assets': 'bg-emerald-50 text-emerald-700 border-emerald-200',
+          'Tax & Consolidation': 'bg-indigo-50 text-indigo-700 border-indigo-200',
+          'Revenue & Leases': 'bg-amber-50 text-amber-700 border-amber-200',
+          'Financial Instruments': 'bg-purple-50 text-purple-700 border-purple-200'
+        };
+
+        return `
+          <div class="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-xs hover:shadow-md hover:border-sky-300 transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2.5">
+                <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-800 border border-slate-200">${std.code}</span>
+                <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full border ${clusterBadgeColors[std.cluster] || 'bg-slate-100 text-slate-600'}">${std.cluster}</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-base leading-snug group-hover:text-sky-700 transition-colors">${std.name}</h3>
+              <p class="text-[11px] text-slate-400 font-mono italic mb-3">${std.enName}</p>
+              
+              <div class="space-y-1.5 mb-4">
+                <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed">
+                  ${std.focus[0]} ${std.focus[1] || ''}
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-[11px] px-2 py-0.5 rounded-md border ${statusColors[customStatus] || 'bg-slate-100 text-slate-600'}">
+                ${customStatus}
+              </span>
+              <button onclick="openStandardModal('${std.code}')" class="text-xs font-semibold text-sky-700 hover:text-sky-900 flex items-center gap-1">
+                Chi tiết & Dạng bài →
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterStandardsByCluster(cluster) {
+      currentClusterFilter = cluster;
+      document.querySelectorAll('#cluster-filter-container .cluster-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-sky-700', 'text-white');
+        btn.classList.add('bg-white', 'text-slate-600');
+      });
+      event?.target?.classList?.add('active', 'bg-sky-700', 'text-white');
+      renderStandards();
+      // Smooth scroll if clicked from roadmap
+      if (cluster !== 'all') {
+        const target = document.getElementById('standards');
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    /* ==========================================================================
+       4. STANDARD DETAIL MODAL
+       ========================================================================== */
+
+    let activeModalStandardCode = null;
+
+    function openStandardModal(code) {
+      const std = STANDARDS_DATA.find(s => s.code === code);
+      if (!std) return;
+      activeModalStandardCode = code;
+
+      document.getElementById('modal-code').innerText = std.code;
+      document.getElementById('modal-cluster').innerText = std.cluster;
+      document.getElementById('modal-title').innerText = std.name;
+      document.getElementById('modal-desc').innerText = std.enName;
+
+      const currentStatus = appState.standardsStatus[std.code] || std.status;
+      const statusSelect = document.getElementById('modal-status-select');
+      if (statusSelect) statusSelect.value = currentStatus;
+
+      const focusContainer = document.getElementById('modal-focus-list');
+      focusContainer.innerHTML = std.focus.map(f => `<li class="leading-relaxed">${f}</li>`).join('');
+
+      const exContainer = document.getElementById('modal-exercises-tags');
+      exContainer.innerHTML = std.exercises.map(e => `
+        <span class="inline-flex items-center text-xs px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 font-medium">
+          ${e}
+        </span>
+      `).join('');
+
+      document.getElementById('modal-related').innerText = std.related;
+
+      document.getElementById('standard-modal').classList.remove('hidden');
+    }
+
+    function closeStandardModal() {
+      document.getElementById('standard-modal').classList.add('hidden');
+      activeModalStandardCode = null;
+    }
+
+    function updateModalStandardStatus() {
+      if (!activeModalStandardCode) return;
+      const val = document.getElementById('modal-status-select').value;
+      appState.standardsStatus[activeModalStandardCode] = val;
+      saveState(appState);
+      renderStandards();
+    }
+
+    /* ==========================================================================
+       5. RENDER PRACTICE EXERCISES (EX-01 to EX-25) & PROGRESS
+       ========================================================================== */
+
+    let currentExStatusFilter = 'all';
+
+    function renderExercises() {
+      const tbody = document.getElementById('exercises-table-body');
+      let doneCount = 0;
+      let retryCount = 0;
+      let todoCount = 0;
+
+      EXERCISES_DATA.forEach(ex => {
+        const st = appState.exercisesStatus[ex.id] || 'todo';
+        if (st === 'done') doneCount++;
+        else if (st === 'retry') retryCount++;
+        else todoCount++;
+      });
+
+      // Update counters
+      const countDoneEl = document.getElementById('count-ex-done');
+      const countRetryEl = document.getElementById('count-ex-retry');
+      const countTodoEl = document.getElementById('count-ex-todo');
+      if (countDoneEl) countDoneEl.innerText = doneCount;
+      if (countRetryEl) countRetryEl.innerText = retryCount;
+      if (countTodoEl) countTodoEl.innerText = todoCount;
+
+      // Update Hero progress
+      const percent = Math.round((doneCount / EXERCISES_DATA.length) * 100);
+      const heroText = document.getElementById('hero-progress-text');
+      const heroBar = document.getElementById('hero-progress-bar');
+      if (heroText) heroText.innerText = `${doneCount} / 25 Dạng bài (${percent}%)`;
+      if (heroBar) heroBar.style.width = `${percent}%`;
+
+      const filtered = EXERCISES_DATA.filter(ex => {
+        const st = appState.exercisesStatus[ex.id] || 'todo';
+        if (currentExStatusFilter === 'all') return true;
+        return st === currentExStatusFilter;
+      });
+
+      tbody.innerHTML = filtered.map(ex => {
+        const status = appState.exercisesStatus[ex.id] || 'todo';
+
+        const statusBadges = {
+          'done': '<span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">✓ Đã ôn</span>',
+          'retry': '<span class="inline-flex items-center gap-1 text-[11px] font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">⚠ Làm lại</span>',
+          'todo': '<span class="inline-flex items-center gap-1 text-[11px] font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded">○ Chưa ôn</span>'
+        };
+
+        return `
+          <tr class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3 px-4">${statusBadges[status]}</td>
+            <td class="py-3 px-4 font-mono font-bold text-sky-800 text-xs">${ex.id}</td>
+            <td class="py-3 px-4 font-semibold text-slate-900">${ex.name}</td>
+            <td class="py-3 px-4">
+              <button onclick="openStandardModal('${ex.standard}')" class="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-700 hover:bg-sky-100 hover:text-sky-800 transition-colors">
+                ${ex.standard}
+              </button>
+            </td>
+            <td class="py-3 px-4">
+              <span class="text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">${ex.skill}</span>
+            </td>
+            <td class="py-3 px-4 text-right">
+              <div class="inline-flex items-center gap-1 bg-slate-100 p-0.5 rounded-lg border border-slate-200">
+                <button onclick="setExerciseStatus('${ex.id}', 'done')" title="Đánh dấu đã ôn" class="px-2 py-1 rounded text-xs font-bold ${status === 'done' ? 'bg-emerald-600 text-white shadow-xs' : 'text-slate-600 hover:text-emerald-700'}">✓</button>
+                <button onclick="setExerciseStatus('${ex.id}', 'retry')" title="Cần làm lại" class="px-2 py-1 rounded text-xs font-bold ${status === 'retry' ? 'bg-rose-600 text-white shadow-xs' : 'text-slate-600 hover:text-rose-700'}">⚠</button>
+                <button onclick="setExerciseStatus('${ex.id}', 'todo')" title="Đặt lại trạng thái" class="px-2 py-1 rounded text-xs font-bold ${status === 'todo' ? 'bg-slate-700 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'}">○</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function setExerciseStatus(id, newStatus) {
+      appState.exercisesStatus[id] = newStatus;
+      saveState(appState);
+      renderExercises();
+    }
+
+    function filterExercisesByStatus(status) {
+      currentExStatusFilter = status;
+      document.querySelectorAll('.ex-status-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-slate-900', 'text-white');
+        if (btn.classList.contains('bg-emerald-100') || btn.classList.contains('bg-rose-100') || btn.classList.contains('bg-slate-100')) {
+          // keep color tone
+        }
+      });
+      event?.target?.classList?.add('active', 'bg-slate-900', 'text-white');
+      renderExercises();
+    }
+
+    /* ==========================================================================
+       6. RENDER 11 TYPICAL CASES
+       ========================================================================== */
+
+    function renderCases() {
+      const container = document.getElementById('cases-grid');
+      container.innerHTML = CASES_DATA.map(c => `
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 hover:border-indigo-300 hover:bg-white transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <span class="text-xs font-bold text-indigo-900">${c.topic}</span>
+              <span class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200">${c.tag}</span>
+            </div>
+            <p class="text-xs font-mono text-slate-800 font-semibold bg-white p-2 rounded-lg border border-slate-200 mb-2 leading-relaxed">
+              ${c.numbers}
+            </p>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              ${c.focus}
+            </p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ==========================================================================
+       7. KNOWLEDGE MAP (Interactive Chains & Matrix)
+       ========================================================================== */
+
+    const CHAINS_DATA = {
+      1: {
+        title: "Chuỗi 1: Doanh thu & Công cụ tài chính (IFRS 15 → IFRS 9 → IFRS 7)",
+        flow: [
+          { std: "IFRS 15", role: "Ghi nhận Doanh thu & Phát sinh Khoản phải thu (Trade Receivables) hoặc Tài sản hợp đồng (Contract Asset)." },
+          { std: "IFRS 9", role: "Phân loại Amortised cost; Đo lường tổn thất tín dụng dự kiến theo Mô hình tổn thất 3 giai đoạn hoặc Provision Matrix." },
+          { std: "IFRS 7", role: "Thuyết minh rủi ro tín dụng (Credit Risk Exposure), biến động Quỹ dự phòng ECL và chất lượng nợ." }
+        ],
+        scenario: "Doanh nghiệp ký hợp đồng bán hàng trả chậm hoặc hợp đồng nhiều nghĩa vụ thực hiện (Case ABC máy móc, Case XYZ trả sau 18 tháng). IFRS 15 xác định doanh thu tách biệt phần lãi tài trợ; IFRS 9 theo dõi công nợ và trích lập ECL; IFRS 7 thuyết minh rủi ro tín dụng chi tiết trên BCTC."
+      },
+      2: {
+        title: "Chuỗi 2: M&A & Hợp nhất BCTC (IFRS 3 → IAS 12 → IFRS 10 → IAS 36)",
+        flow: [
+          { std: "IFRS 3", role: "Áp dụng Acquisition Method: Định giá Fair Value tài sản thuần, tính Consideration, đo lường NCI và Goodwill ban đầu." },
+          { std: "IAS 12", role: "Ghi nhận Thuế hoãn lại (DTL/DTA) phát sinh từ các khoản Fair Value Adjustments tại ngày mua (ảnh hưởng trực tiếp Goodwill)." },
+          { std: "IFRS 10", role: "Thiết lập BCTC hợp nhất qua các bảng W1-W6, loại trừ giao dịch nội bộ và lãi chưa thực hiện (PURP)." },
+          { std: "IAS 36", role: "Thực hiện Annual Impairment Test bắt buộc cho Lợi thế thương mại (Goodwill) phân bổ theo CGU." }
+        ],
+        scenario: "Quy trình hợp nhất hoàn chỉnh trong đề thi DipIFR: Tập đoàn mua công ty con → Đánh giá lại tài sản thuần theo Fair Value → Tính DTL trên chênh lệch đánh giá lại → Tính Goodwill → Loại trừ giao dịch mua bán nội bộ → Kiểm tra suy giảm giá trị Goodwill cuối năm."
+      },
+      3: {
+        title: "Chuỗi 3: Tài sản dài hạn & Thuế hoãn lại (IAS 16 / IAS 38 → IAS 36 → IAS 12)",
+        flow: [
+          { std: "IAS 16 / 38", role: "Vốn hóa nguyên giá ban đầu; trích khấu hao (Depreciation / Amortisation) định kỳ; đánh giá lại Revaluation Surplus." },
+          { std: "IAS 36", role: "Nhận diện dấu hiệu suy giảm và ghi nhận Impairment Loss khi Recoverable Amount < Carrying Amount." },
+          { std: "IAS 12", role: "Xử lý chênh lệch tạm thời giữa Carrying Amount và Tax Base (Khấu hao thuế khác kế toán, Revaluation ghi vào OCI, Impairment ghi vào P/L)." }
+        ],
+        scenario: "Dây chuyền máy móc hoặc phần mềm tự phát triển: IAS 16/38 vốn hóa và khấu hao; cuối kỳ gặp khó khăn thị trường kích hoạt test suy giảm IAS 36; toàn bộ biến động này tạo ra Temporary Differences làm thay đổi DTA/DTL trên Bảng cân đối kế toán."
+      },
+      4: {
+        title: "Chuỗi 4: Công cụ tài chính toàn diện (IAS 32 → IFRS 9 → IFRS 7 / 13)",
+        flow: [
+          { std: "IAS 32", role: "Phân loại bản chất: Financial Liability vs Equity (Fixed-for-fixed); Tách cấu phần Trái phiếu chuyển đổi (Split accounting)." },
+          { std: "IFRS 9", role: "Phân loại theo Business Model & SPPI; Áp dụng lãi suất thực EIR; Đo lường rủi ro tín dụng riêng (Own credit risk)." },
+          { std: "IFRS 13", role: "Cung cấp kỹ thuật định giá Fair Value (Level 1, 2, 3) cho các công cụ phái sinh hoặc nợ tài chính phức tạp." },
+          { std: "IFRS 7", role: "Thuyết minh rủi ro thị trường (Market risk), rủi ro thanh khoản (Liquidity risk) và bảng phân tích độ nhạy (Sensitivity)." }
+        ],
+        scenario: "Doanh nghiệp phát hành trái phiếu chuyển đổi $12m: IAS 32 tách nợ $10.5m và vốn $1.5m; IFRS 9 phân bổ chiết khấu theo EIR qua 4 năm; IFRS 13 định giá fair value quyền chọn; IFRS 7 thuyết minh rủi ro thanh khoản theo kỳ hạn dòng tiền."
+      }
+    };
+
+    function selectChain(chainId) {
+      document.querySelectorAll('.chain-tab-btn').forEach((btn, idx) => {
+        btn.classList.remove('active', 'bg-sky-600', 'text-white');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      document.getElementById(`chain-btn-${chainId}`).classList.add('active', 'bg-sky-600', 'text-white');
+      document.getElementById(`chain-btn-${chainId}`).classList.remove('bg-slate-800', 'text-slate-300');
+
+      const data = CHAINS_DATA[chainId];
+      const box = document.getElementById('chain-details-box');
+      box.innerHTML = `
+        <h4 class="text-base font-bold text-sky-400 mb-2">${data.title}</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-${data.flow.length} gap-3 my-4">
+          ${data.flow.map((f, i) => `
+            <div class="bg-slate-900/80 border border-slate-700/80 rounded-xl p-3 relative">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="w-5 h-5 rounded-full bg-sky-500/20 text-sky-400 text-xs font-bold flex items-center justify-center font-mono">${i + 1}</span>
+                <span class="font-mono font-bold text-white text-xs">${f.std}</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">${f.role}</p>
+            </div>
+          `).join('')}
+        </div>
+        <div class="mt-4 p-3 rounded-xl bg-slate-900/60 border border-slate-700/60 text-xs text-slate-300 leading-relaxed">
+          <span class="font-bold text-amber-300">Tình huống thực hành: </span>
+          ${data.scenario}
+        </div>
+      `;
+    }
+
+    function renderMatrix() {
+      const tbody = document.getElementById('matrix-table-body');
+      tbody.innerHTML = MATRIX_DATA.map(m => `
+        <tr class="hover:bg-slate-800/40 transition-colors">
+          <td class="py-2.5 px-3 font-semibold text-sky-300">${m.cluster}</td>
+          <td class="py-2.5 px-3 font-mono text-white text-[11px]">${m.standards}</td>
+          <td class="py-2.5 px-3 text-slate-300 leading-relaxed">${m.rel}</td>
+        </tr>
+      `).join('');
+    }
+
+    /* ==========================================================================
+       8. EXAM PREP (IFRS 9 Self-Eval, Priority Checklist & Mini-Quiz)
+       ========================================================================== */
+
+    function renderIFRS9Eval() {
+      const container = document.getElementById('ifrs9-eval-list');
+      container.innerHTML = IFRS9_EVAL.map(item => {
+        const bgColors = {
+          emerald: 'bg-emerald-50 text-emerald-800 border-emerald-200',
+          amber: 'bg-amber-50 text-amber-800 border-amber-200',
+          rose: 'bg-rose-50 text-rose-800 border-rose-300 font-bold'
+        };
+        const barColors = {
+          emerald: 'bg-emerald-500',
+          amber: 'bg-amber-500',
+          rose: 'bg-rose-500'
+        };
+
+        const percentVal = parseInt(item.score.replace('%', '').split('–')[0]) || 50;
+
+        return `
+          <div class="space-y-1">
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-semibold text-slate-800">${item.topic}</span>
+              <div class="flex items-center gap-2">
+                <span class="font-mono font-bold text-slate-900">${item.score}</span>
+                <span class="px-1.5 py-0.5 rounded text-[10px] border ${bgColors[item.color]}">${item.status}</span>
+              </div>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+              <div class="${barColors[item.color]} h-full rounded-full" style="width: ${percentVal}%"></div>
+            </div>
+            <p class="text-[11px] text-slate-500 italic">${item.note}</p>
+          </div>
+        `;
+      }).join('');
+    }
+
+    const CHECKLIST_ITEMS = [
+      { id: "chk-1", text: "IFRS 9 Derecognition: Luyện phân tích chuyển giao contractual cash flows, risks & rewards, recourse vs non-recourse, continuing involvement (Mức hiện tại 50%)." },
+      { id: "chk-2", text: "IFRS 9 ECL: Phân biệt rõ 12-month ECL (Stage 1) và Lifetime ECL (Stage 2 & 3); hiểu thấu đáo Stage 2 không đồng nghĩa với default." },
+      { id: "chk-3", text: "IFRS 9 Debt FVOCI: Tách bạch rõ 3 thành phần: Lãi suất thực EIR vào P/L, Quỹ dự phòng ECL vào P/L đối ứng OCI, và biến động Fair Value vào OCI." },
+      { id: "chk-4", text: "IFRS 9 Financial Liabilities: Nắm vững chi phí phát hành, phân bổ EIR, và xử lý Own Credit Risk vào OCI khi chọn FVTPL option." },
+      { id: "chk-5", text: "Chuỗi tích hợp 1: IFRS 15 (Doanh thu/khoản phải thu) → IFRS 9 (Phân loại & ECL) → IFRS 7 (Thuyết minh rủi ro tín dụng)." },
+      { id: "chk-6", text: "Chuỗi tích hợp 2: IFRS 3 (Acquisition & Goodwill) → IAS 12 (Deferred tax on FV adjustments) → IFRS 10 (Consolidation W1-W6) → IAS 36 (Goodwill Impairment)." },
+      { id: "chk-7", text: "Chuỗi tích hợp 3: IAS 16/38 (Nguyên giá, khấu hao) → IAS 36 (Impairment CGU) → IAS 12 (Tax effects trên chênh lệch tạm thời)." },
+      { id: "chk-8", text: "Chuỗi tích hợp 4: IFRS 16 (ROU asset & Lease liability) → IAS 12 (Deferred tax phát sinh từ khác biệt thời gian)." },
+      { id: "chk-9", text: "Chuỗi tích hợp 5: IAS 32 (Phân loại Nợ/Vốn & Split compound convertible bond) → IFRS 9 (Amortised cost & EIR schedule)." },
+      { id: "chk-10", text: "Chuỗi tích hợp 6: IFRS 9 + IFRS 7 + IFRS 13 (Đo lường Fair value hierarchy Level 1/2/3 và thuyết minh rủi ro thị trường)." }
+    ];
+
+    function renderChecklist() {
+      const container = document.getElementById('checklist-container');
+      let doneCount = 0;
+
+      container.innerHTML = CHECKLIST_ITEMS.map((item, idx) => {
+        const isChecked = !!appState.checklist[item.id];
+        if (isChecked) doneCount++;
+
+        return `
+          <label class="flex items-start gap-3 p-3 rounded-xl border ${isChecked ? 'bg-amber-50/60 border-amber-200' : 'bg-slate-50 border-slate-200'} hover:border-amber-300 transition-all cursor-pointer">
+            <input type="checkbox" onchange="toggleChecklistItem('${item.id}', this.checked)" ${isChecked ? 'checked' : ''} class="mt-0.5 w-4 h-4 text-amber-600 rounded border-slate-300 focus:ring-amber-500">
+            <div class="text-xs text-slate-800 leading-relaxed ${isChecked ? 'line-through text-slate-400' : ''}">
+              <span class="font-bold font-mono text-slate-900 mr-1">#${idx + 1}</span>
+              ${item.text}
+            </div>
+          </label>
+        `;
+      }).join('');
+
+      const badge = document.getElementById('checklist-progress-badge');
+      if (badge) badge.innerText = `${doneCount}/${CHECKLIST_ITEMS.length} Đạt`;
+    }
+
+    function toggleChecklistItem(id, checked) {
+      appState.checklist[id] = checked;
+      saveState(appState);
+      renderChecklist();
+    }
+
+    /* ==========================================================================
+       9. MINI-MOCK EXAM / QUIZ ENGINE
+       ========================================================================== */
+
+    function renderQuiz() {
+      const container = document.getElementById('quiz-container');
+      let score = 0;
+
+      container.innerHTML = QUIZ_QUESTIONS.map((q, idx) => {
+        const userChoice = appState.quizAnswers[q.id];
+        const hasAnswered = userChoice !== undefined;
+        const isCorrect = userChoice === q.correct;
+        if (isCorrect) score++;
+
+        return `
+          <div class="bg-slate-800/90 border border-slate-700 rounded-2xl p-5 transition-all">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-sky-900 text-sky-300 border border-sky-700">Question 0${idx + 1}</span>
+                <span class="text-[11px] font-mono text-slate-400">${q.standard}</span>
+              </div>
+              ${hasAnswered ? (isCorrect 
+                ? '<span class="text-xs font-bold text-emerald-400 flex items-center gap-1">✓ Correct (Chính xác)</span>' 
+                : '<span class="text-xs font-bold text-rose-400 flex items-center gap-1">✗ Incorrect (Chưa chính xác)</span>') : ''}
+            </div>
+            <h4 class="text-sm font-semibold text-white mb-4 leading-relaxed">${q.question}</h4>
+
+            <div class="space-y-2 mb-4">
+              ${q.options.map((opt, optIdx) => {
+                let btnStyle = "bg-slate-900/60 hover:bg-slate-700 border-slate-700 text-slate-200";
+                if (hasAnswered) {
+                  if (optIdx === q.correct) {
+                    btnStyle = "bg-emerald-950/80 border-emerald-500 text-emerald-200 font-semibold ring-1 ring-emerald-500";
+                  } else if (optIdx === userChoice) {
+                    btnStyle = "bg-rose-950/80 border-rose-500 text-rose-200";
+                  } else {
+                    btnStyle = "bg-slate-900/30 border-slate-800 text-slate-500 opacity-60";
+                  }
+                }
+
+                return `
+                  <button onclick="answerQuestion(${q.id}, ${optIdx})" ${hasAnswered ? 'disabled' : ''} class="w-full text-left p-3 rounded-xl border text-xs leading-relaxed transition-all flex items-start gap-2.5 ${btnStyle}">
+                    <span class="w-5 h-5 rounded-full border border-current flex items-center justify-center text-[10px] font-mono shrink-0 mt-0.5 font-bold">
+                      ${String.fromCharCode(65 + optIdx)}
+                    </span>
+                    <span>${opt}</span>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+
+            ${hasAnswered ? `
+              <div class="mt-4 p-4 rounded-2xl ${isCorrect ? 'bg-emerald-950/30 border border-emerald-800/80 text-emerald-100' : 'bg-slate-900 border border-slate-700 text-slate-200'} space-y-3 text-xs leading-relaxed shadow-inner">
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-slate-700/80">
+                  <span class="font-bold text-amber-300 font-mono text-[11px] uppercase tracking-wider flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    Standard Ref: ${q.ref || q.standard}
+                  </span>
+                  <span class="text-[11px] px-2 py-0.5 rounded-md font-bold font-mono ${isCorrect ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-amber-500/20 text-amber-300 border border-amber-500/40'}">
+                    Correct Option: ${String.fromCharCode(65 + q.correct)}
+                  </span>
+                </div>
+                
+                <!-- English Technical Explanation -->
+                <div class="space-y-1">
+                  <div class="flex items-center gap-1.5 font-bold text-sky-300 text-xs">
+                    <span>🇬🇧 IFRS Technical Rationale (English):</span>
+                  </div>
+                  <p class="text-slate-300 pl-3.5 border-l-2 border-sky-500/60 leading-relaxed font-sans">${q.explanationEn}</p>
+                </div>
+
+                <!-- Vietnamese Technical Explanation -->
+                <div class="space-y-1 pt-1">
+                  <div class="flex items-center gap-1.5 font-bold text-amber-300 text-xs">
+                    <span>🇻🇳 Giải thích tiếng Việt & Trọng tâm đề thi DipIFR:</span>
+                  </div>
+                  <p class="text-slate-300 pl-3.5 border-l-2 border-amber-500/60 leading-relaxed font-sans">${q.explanationVi}</p>
+                </div>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join('');
+
+      const scoreEl = document.getElementById('quiz-score');
+      if (scoreEl) scoreEl.innerText = `${score} / ${QUIZ_QUESTIONS.length} Điểm`;
+    }
+
+    function answerQuestion(qId, choiceIdx) {
+      appState.quizAnswers[qId] = choiceIdx;
+      saveState(appState);
+      renderQuiz();
+    }
+
+    function resetQuiz() {
+      appState.quizAnswers = {};
+      saveState(appState);
+      renderQuiz();
+    }
+
+    /* ==========================================================================
+       10. PERSONAL STUDY NOTES & EXPORT / IMPORT
+       ========================================================================== */
+
+    function initNotes() {
+      const notesEl = document.getElementById('personal-notes');
+      const statusEl = document.getElementById('notes-save-status');
+      if (!notesEl) return;
+
+      notesEl.value = appState.notes || "";
+
+      let timeoutId;
+      notesEl.addEventListener('input', () => {
+        appState.notes = notesEl.value;
+        saveState(appState);
+
+        if (statusEl) {
+          statusEl.classList.remove('hidden');
+          clearTimeout(timeoutId);
+          timeoutId = setTimeout(() => {
+            statusEl.classList.add('hidden');
+          }, 2000);
+        }
+      });
+    }
+
+    function downloadNotes() {
+      const content = document.getElementById('personal-notes').value || "Chưa có ghi chú.";
+      const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `DipIFR_Study_Notes_${new Date().toISOString().slice(0, 10)}.txt`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Export entire learning progress as JSON
+    document.getElementById('btn-export-data')?.addEventListener('click', () => {
+      const dataStr = JSON.stringify(appState, null, 2);
+      const blob = new Blob([dataStr], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `IFRS_Learning_Hub_Backup_${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Import progress from JSON file
+    document.getElementById('import-file')?.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        try {
+          const imported = JSON.parse(event.target.result);
+          if (imported && typeof imported === 'object') {
+            appState = imported;
+            saveState(appState);
+            alert("✓ Đã nhập dữ liệu học tập thành công!");
+            location.reload();
+          }
+        } catch (err) {
+          alert("Lỗi: Tệp tin JSON không hợp lệ.");
+        }
+      };
+      reader.readAsText(file);
+    });
+
+    // Mobile nav toggle
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+
+    // Live search standards listener
+    document.getElementById('standard-search')?.addEventListener('input', () => {
+      renderStandards();
+    });
+
+    /* ==========================================================================
+       INITIALIZATION
+       ========================================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      renderStandards();
+      renderExercises();
+      renderCases();
+      selectChain(1);
+      renderMatrix();
+      renderIFRS9Eval();
+      renderChecklist();
+      renderQuiz();
+      initNotes();
+    });
+  </script>
 </body>
 </html>
